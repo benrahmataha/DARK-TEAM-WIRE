@@ -4,127 +4,309 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KURAMA KEY</title>
+<title>DARK CLIENT</title>
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0;min-height:100vh;display:flex;
-  align-items:center;justify-content:center;
-  background:radial-gradient(ellipse at top,#260609,#080808 65%);
-  color:white;font-family:Arial,sans-serif;
-  padding:20px
+margin:0;background:#09070d;color:white;
+font-family:Arial,sans-serif;
 }
+.app{max-width:680px;margin:auto;padding:18px 15px}
+header{
+display:flex;align-items:center;gap:14px;
+padding:12px 5px 20px;border-bottom:1px solid #38213f
+}
+.logo{
+width:62px;height:62px;border-radius:17px;
+background:linear-gradient(135deg,#8e20d3,#ed45cf);
+display:grid;place-items:center;font-size:29px;
+box-shadow:0 0 20px #a52bff66;
+}
+.brand{font-size:22px;font-weight:900;letter-spacing:3px}
+.brand span{color:#ed45cf}
+.status{font-size:11px;color:#d58cff;margin-top:7px;letter-spacing:2px}
+.copy{
+width:100%;margin:20px 0 12px;padding:17px;
+border:0;border-radius:14px;
+background:linear-gradient(110deg,#7621a8,#d43ac7);
+color:white;font-weight:bold;letter-spacing:2px;
+font-size:14px;cursor:pointer
+}
+.info{font-size:12px;color:#92849a;line-height:1.6}
+.tabs{
+display:flex;gap:8px;padding:7px;
+background:#0e0a12;border:1px solid #35213f;
+border-radius:15px;margin:20px 0
+}
+.tab{
+flex:1;padding:14px 5px;border:0;
+border-radius:10px;background:transparent;
+color:#a99bb2;font-weight:bold;cursor:pointer;
+letter-spacing:1px
+}
+.tab.active{
+background:linear-gradient(110deg,#8e20d3,#d43ac7);
+color:white;box-shadow:0 0 15px #a52bff55
+}
+.section{display:none}
+.section.active{display:block}
 .card{
-  width:100%;max-width:430px;text-align:center;
-  background:#0c0c0f;border:1px solid #6e1018;
-  border-radius:18px;padding:30px 22px;
-  box-shadow:0 0 30px #ff001522
+background:linear-gradient(145deg,#211326,#110d17);
+border:1px solid #71316e;border-radius:17px;
+padding:17px;margin:12px 0;
+box-shadow:0 0 13px #d43ac71b
 }
-h1{font-size:30px;letter-spacing:3px;margin:8px 0}
-h1 span{color:#ff2038}
-.subtitle{color:#999;font-size:11px;letter-spacing:3px;margin-bottom:35px}
-button{
-  width:100%;padding:17px 10px;border:1px solid #ff5262;
-  border-radius:10px;background:linear-gradient(135deg,#b90017,#ff233a);
-  color:white;font-size:17px;font-weight:bold;letter-spacing:1px;
-  cursor:pointer;box-shadow:0 0 18px #ff001533
+.head{display:flex;justify-content:space-between;align-items:center}
+.name{font-size:14px;font-weight:bold}
+.switch{
+appearance:none;width:48px;height:27px;
+border-radius:20px;background:#39313f;
+position:relative;cursor:pointer;flex-shrink:0
 }
-button:disabled{opacity:.6}
-.progress-info{display:flex;justify-content:space-between;
-  color:#aaa;font-size:12px;margin:25px 0 8px}
-.track{height:12px;background:#222;border-radius:20px;overflow:hidden;
-  border:1px solid #512027}
-.bar{height:100%;width:0;background:#ff2038;
-  box-shadow:0 0 12px #ff2038;transition:width .08s linear}
-.result{display:none;margin-top:28px;padding:18px 10px;
-  border:1px solid #6e1018;border-radius:12px;background:#12090b}
-.result p{font-size:11px;color:#aaa;letter-spacing:2px}
-.key{font-size:21px;font-weight:bold;color:#ff4053;
-  overflow-wrap:anywhere;margin:18px 0}
-.copy{background:#171719;border-color:#444;font-size:14px}
-.status{font-size:12px;color:#888;margin-top:22px}
+.switch:before{
+content:"";position:absolute;width:19px;height:19px;
+left:4px;top:4px;border-radius:50%;
+background:#aaa;transition:.2s
+}
+.switch:checked{background:linear-gradient(90deg,#8e20d3,#ed45cf)}
+.switch:checked:before{left:25px;background:white}
+.bone-title{
+font-size:12px;color:#aa9bb4;
+font-weight:bold;margin-bottom:13px
+}
+.bones{display:flex;gap:8px}
+.bone{
+flex:1;padding:12px 3px;border-radius:11px;
+border:1px solid #493450;background:#17121d;
+color:#b9adbf;font-weight:bold;font-size:11px
+}
+.bone.active{
+background:linear-gradient(110deg,#8e20d3,#d43ac7);
+color:white
+}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.tile{
+min-height:145px;background:linear-gradient(145deg,#211326,#110d17);
+border:1px solid #71316e;border-radius:17px;
+padding:15px;display:flex;flex-direction:column;
+justify-content:space-between
+}
+.symbol{font-size:23px;color:#e34bd8;margin-bottom:14px}
+.toggleline{
+display:flex;align-items:center;gap:9px;
+font-size:11px;color:#d78aff;font-weight:bold
+}
+.download{
+display:block;text-align:center;text-decoration:none;
+margin-top:18px;padding:18px;border-radius:14px;
+background:linear-gradient(110deg,#8e20d3,#d43ac7);
+color:white;font-weight:bold;letter-spacing:2px
+}
+.note{text-align:center;color:#82758b;font-size:11px;margin-top:20px}
+.toast{
+position:fixed;bottom:22px;left:50%;
+transform:translate(-50%,20px);
+opacity:0;background:#291532;border:1px solid #b84cff;
+padding:13px 18px;border-radius:12px;
+transition:.2s;pointer-events:none
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:390px){
+.grid{gap:8px}.tile{padding:12px}
+}
 </style>
 </head>
 <body>
-<div class="card">
-  <h1>KURAMA <span>KEY</span></h1>
-  <div class="subtitle">KEY GENERATOR SYSTEM</div>
+<div class="app">
 
-  <button id="generate" onclick="generateKey()">
-    ⚙ GENERATE KEY
-  </button>
+<header>
+<div class="logo">👻</div>
+<div>
+<div class="brand">DARK <span>CLIENT</span></div>
+<div class="status">● CONNECTED</div>
+</div>
+</header>
 
-  <div class="progress-info">
-    <span id="status">READY TO GENERATE</span>
-    <span id="percent">0%</span>
-  </div>
-  <div class="track">
-    <div class="bar" id="bar"></div>
-  </div>
+<button class="copy" id="copyConfig">
+▣ &nbsp; COPY CONFIG
+</button>
 
-  <div class="result" id="result">
-    <p>✓ YOUR KEY IS READY</p>
-    <div class="key" id="key">KURAMA-20SAFE</div>
-    <button class="copy" onclick="copyKey()">COPY KEY</button>
-  </div>
+<p class="info">
+DARK CLIENT • Purple Edition.
+</p>
 
-  <div class="status">KURAMA SYSTEM • V1.0</div>
+<div class="tabs">
+<button class="tab active" data-tab="features">
+✦ FEATURES
+</button>
+<button class="tab" data-tab="settings">
+⚙ SETTINGS
+</button>
 </div>
 
+<section class="section active" id="features">
+
+<div class="card">
+<div class="head">
+<div class="name">◎ AIM COLLIDER</div>
+<input class="switch" type="checkbox">
+</div>
+</div>
+
+<div class="card">
+<div class="bone-title">◉ COLLIDER BONE</div>
+<div class="bones">
+<button class="bone">HEAD</button>
+<button class="bone">HEAD/NECK</button>
+<button class="bone active">NECK</button>
+</div>
+</div>
+
+<div class="grid">
+
+<div class="tile">
+<div>
+<div class="symbol">◎</div>
+<div class="name">Headshot Halal</div>
+</div>
+<div class="toggleline">
+<input class="switch" type="checkbox" checked>
+<span>ON</span>
+</div>
+</div>
+
+<div class="tile">
+<div>
+<div class="symbol">♆</div>
+<div class="name">Enemy Pull</div>
+</div>
+<div class="toggleline">
+<input class="switch" type="checkbox" checked>
+<span>ON</span>
+</div>
+</div>
+
+<div class="tile">
+<div>
+<div class="symbol">♡</div>
+<div class="name">Auto Revive</div>
+</div>
+<div class="toggleline">
+<input class="switch" type="checkbox" checked>
+<span>ON</span>
+</div>
+</div>
+
+<div class="tile">
+<div>
+<div class="symbol">↗</div>
+<div class="name">Auto Finish</div>
+</div>
+<div class="toggleline">
+<input class="switch" type="checkbox" checked>
+<span>ON</span>
+</div>
+</div>
+
+<div class="tile">
+<div>
+<div class="symbol">♧</div>
+<div class="name">Homer 0 Delay</div>
+</div>
+<div class="toggleline">
+<input class="switch" type="checkbox" checked>
+<span>ON</span>
+</div>
+</div>
+
+<div class="tile">
+<div>
+<div class="symbol">☠</div>
+<div class="name">Headshot Killfeed</div>
+</div>
+<div class="toggleline">
+<input class="switch" type="checkbox" checked>
+<span>ON</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="settings">
+<div class="card">
+<div class="name">HAPP PROXY</div>
+<p class="info">Download Happ Android Application.</p>
+<a class="download"
+href="https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk"
+target="_blank">
+↓ &nbsp; HAPP DOWNLOAD
+</a>
+</div>
+</section>
+
+<p class="note">
+DARK CLIENT • PURPLE EDITION
+</p>
+</div>
+
+<div class="toast" id="toast">CONFIG COPIED ✓</div>
+
 <script>
-let running = false;
+const tabs=document.querySelectorAll('.tab');
 
-function generateKey(){
-  if(running) return;
-  running = true;
+tabs.forEach(btn=>{
+btn.addEventListener('click',()=>{
+tabs.forEach(t=>t.classList.toggle('active',t===btn));
+document.querySelectorAll('.section').forEach(s=>{
+s.classList.toggle('active',s.id===btn.dataset.tab);
+});
+});
+});
 
-  const btn = document.getElementById("generate");
-  const bar = document.getElementById("bar");
-  const percent = document.getElementById("percent");
-  const status = document.getElementById("status");
-  const result = document.getElementById("result");
+document.querySelectorAll('.bone').forEach(btn=>{
+btn.addEventListener('click',()=>{
+btn.parentElement.querySelectorAll('.bone')
+.forEach(b=>b.classList.toggle('active',b===btn));
+});
+});
 
-  btn.disabled = true;
-  result.style.display = "none";
+document.querySelectorAll('.toggleline .switch').forEach(sw=>{
+const label=sw.parentElement.querySelector('span');
+const update=()=>label.textContent=sw.checked?'ON':'OFF';
+sw.addEventListener('change',update);
+update();
+});
 
-  let progress = 0;
-  status.textContent = "GENERATING KEY...";
+document.getElementById('copyConfig')
+.addEventListener('click',async()=>{
+const value='https://github.com/Dev0x1exe/deev/raw/refs/heads/main/aimbot.json';
 
-  const timer = setInterval(() => {
-    progress++;
-    bar.style.width = progress + "%";
-    percent.textContent = progress + "%";
-
-    if(progress >= 100){
-      clearInterval(timer);
-      status.textContent = "GENERATION COMPLETE";
-      result.style.display = "block";
-      btn.textContent = "✓ KEY GENERATED";
-      running = false;
-    }
-  }, 35);
+try{
+await navigator.clipboard.writeText(value);
+showToast('CONFIG COPIED ✓');
+}catch(e){
+const area=document.createElement('textarea');
+area.value=value;
+document.body.appendChild(area);
+area.select();
+try{
+document.execCommand('copy');
+showToast('CONFIG COPIED ✓');
+}catch(err){
+showToast('COPY FAILED');
 }
-
-function copyKey(){
-  const key = document.getElementById("key").textContent;
-  if(navigator.clipboard && window.isSecureContext){
-    navigator.clipboard.writeText(key).then(() => {
-      alert("KEY COPIED: " + key);
-    }).catch(() => fallbackCopy(key));
-  } else {
-    fallbackCopy(key);
-  }
+area.remove();
 }
+});
 
-function fallbackCopy(key){
-  const area = document.createElement("textarea");
-  area.value = key;
-  document.body.appendChild(area);
-  area.select();
-  document.execCommand("copy");
-  area.remove();
-  alert("KEY: " + key);
+function showToast(message){
+const toast=document.getElementById('toast');
+toast.textContent=message;
+toast.classList.add('show');
+setTimeout(()=>toast.classList.remove('show'),1900);
 }
 </script>
 </body>
-</html>
+  </html>
+  
