@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b0710">
+<meta name="theme-color" content="#100817">
 <title>DARK CLIENT</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
@@ -13,7 +13,10 @@
 *{box-sizing:border-box;margin:0;padding:0}
 
 body{
- background:radial-gradient(ellipse at top,#351044 0%,transparent 45%),#09070d;
+ background:
+ radial-gradient(circle at 10% 0%,#70258a55,transparent 35%),
+ radial-gradient(circle at 90% 90%,#d33bba22,transparent 35%),
+ #09070e;
  color:white;
  font-family:'Rajdhani',sans-serif;
  min-height:100vh;
@@ -40,31 +43,30 @@ body{
  max-width:390px;
  padding:32px 24px;
  text-align:center;
- background:linear-gradient(145deg,#211326,#100b16);
- border:1px solid #a53ac7;
- border-radius:20px;
- box-shadow:0 0 35px #a52bff25;
+ background:linear-gradient(145deg,#281532,#100b18);
+ border:1px solid #a34ac5;
+ border-radius:24px;
+ box-shadow:0 10px 40px #0007,0 0 25px #a52bff22;
 }
 
-.login-logo{
+.login-logo,.brand{
  font-family:'Orbitron',sans-serif;
- font-size:27px;
  font-weight:900;
  letter-spacing:3px;
 }
-.login-logo span,.brand span{color:#d946e9}
+.login-logo{font-size:27px}
+.login-logo span,.brand span{color:#df59df}
 
 .login-subtitle{
  margin-top:12px;
- color:#bd65e9;
+ color:#c47be9;
  font-family:'Orbitron',sans-serif;
  font-size:10px;
  letter-spacing:3px;
 }
 
 .login-line{
- width:65px;
- height:3px;
+ width:65px;height:3px;
  margin:24px auto;
  border-radius:10px;
  background:linear-gradient(90deg,#8625c5,#ed45cf);
@@ -78,32 +80,32 @@ body{
 }
 
 .login-description{
- color:#a394ad;
+ color:#b3a1bd;
  font-size:15px;
  margin-bottom:24px;
 }
 
 .key-input{
  width:100%;
- padding:17px;
- border-radius:10px;
- border:1px solid #65316e;
+ padding:17px 12px;
+ border-radius:12px;
+ border:1px solid #85429c;
  outline:none;
  background:#0c0811;
  color:white;
  text-align:center;
  font-family:'Orbitron',sans-serif;
- font-size:19px;
- letter-spacing:5px;
+ font-size:15px;
+ letter-spacing:2px;
 }
 
 .key-input:focus{
- border-color:#d946e9;
- box-shadow:0 0 15px #a52bff33;
+ border-color:#e04de0;
+ box-shadow:0 0 15px #a52bff44;
 }
 
 .unlock-btn,.copy,.download,.telegram-button{
- background:linear-gradient(110deg,#8625c5,#d43ac7);
+ background:linear-gradient(110deg,#8625c5,#d43ac7,#e65ab9);
  color:white;
  font-family:'Orbitron',sans-serif;
  font-weight:800;
@@ -115,7 +117,7 @@ body{
  margin-top:17px;
  padding:17px;
  border:0;
- border-radius:10px;
+ border-radius:12px;
  font-size:12px;
  letter-spacing:2px;
 }
@@ -144,19 +146,14 @@ header{
  border-bottom:1px solid #38213f;
 }
 
-.brand{
- font-family:'Orbitron',sans-serif;
- font-size:25px;
- font-weight:900;
- letter-spacing:3px;
-}
+.brand{font-size:25px}
 
 .status{
  margin-top:10px;
  font-family:'Orbitron',sans-serif;
  font-size:10px;
  letter-spacing:3px;
- color:#bd65e9;
+ color:#d47be9;
 }
 
 .copy{
@@ -164,7 +161,7 @@ header{
  margin:22px 0 12px;
  padding:18px;
  border:1px solid #a53ac7;
- border-radius:12px;
+ border-radius:14px;
  font-size:12px;
  letter-spacing:2px;
 }
@@ -175,21 +172,20 @@ header{
  padding:7px;
  margin:22px 0;
  background:#100b16;
- border:1px solid #38213f;
- border-radius:13px;
+ border:1px solid #493052;
+ border-radius:14px;
 }
 
 .tab{
  flex:1;
  padding:15px 5px;
  border:0;
- border-radius:9px;
+ border-radius:10px;
  background:transparent;
- color:#9c8ba5;
+ color:#a99bb0;
  font-family:'Orbitron',sans-serif;
  font-size:11px;
  font-weight:700;
- letter-spacing:1px;
  cursor:pointer;
 }
 
@@ -214,14 +210,11 @@ header{
  display:flex;
  flex-direction:column;
  justify-content:space-between;
- background:linear-gradient(145deg,#211326,#100b16);
- border:1px solid #65316e;
- border-radius:14px;
+ background:linear-gradient(145deg,#26152f,#100b16);
+ border:1px solid #713b83;
+ border-radius:17px;
  box-shadow:0 0 15px #a52bff12;
- transition:.2s;
 }
-
-.tile:hover{border-color:#d946e9}
 
 .name{
  font-family:'Orbitron',sans-serif;
@@ -249,7 +242,6 @@ header{
  background:#39313f;
  position:relative;
  cursor:pointer;
- transition:.2s;
  flex-shrink:0;
 }
 
@@ -274,8 +266,6 @@ header{
  background:white;
 }
 
-/* HEADSHOT RATE */
-
 .headshot-control{
  margin-top:18px;
  padding-top:14px;
@@ -286,7 +276,6 @@ header{
  display:flex;
  justify-content:space-between;
  align-items:center;
- gap:5px;
  color:#d78aff;
  font-family:'Orbitron',sans-serif;
  font-size:9px;
@@ -296,7 +285,6 @@ header{
 #headshotValue{
  color:#ed45cf;
  font-size:13px;
- font-weight:900;
 }
 
 .headshot-slider{
@@ -312,17 +300,7 @@ header{
 
 .headshot-slider::-webkit-slider-thumb{
  appearance:none;
- width:17px;
- height:17px;
- border-radius:50%;
- background:#d946e9;
- border:2px solid white;
- box-shadow:0 0 10px #d946e9;
-}
-
-.headshot-slider::-moz-range-thumb{
- width:15px;
- height:15px;
+ width:17px;height:17px;
  border-radius:50%;
  background:#d946e9;
  border:2px solid white;
@@ -346,9 +324,9 @@ header{
 
 .settings-card{
  padding:22px;
- background:linear-gradient(145deg,#211326,#100b16);
- border:1px solid #65316e;
- border-radius:14px;
+ background:linear-gradient(145deg,#26152f,#100b16);
+ border:1px solid #713b83;
+ border-radius:17px;
 }
 
 .download{
@@ -357,18 +335,16 @@ header{
  text-decoration:none;
  margin-top:20px;
  padding:18px;
- border-radius:10px;
+ border-radius:12px;
  font-size:11px;
  letter-spacing:2px;
 }
 
 .description{
- color:#a394ad;
+ color:#b3a1bd;
  font-size:15px;
  margin-top:12px;
 }
-
-/* TELEGRAM */
 
 .telegram-button{
  display:flex;
@@ -383,23 +359,17 @@ header{
  text-decoration:none;
  font-size:11px;
  letter-spacing:2px;
- transition:.2s;
-}
-
-.telegram-button:active{
- transform:scale(.98);
 }
 
 .telegram-button svg{
- width:22px;
- height:22px;
+ width:22px;height:22px;
  fill:white;
 }
 
 .footer{
  text-align:center;
  margin-top:30px;
- color:#75667e;
+ color:#95829e;
  font-family:'Orbitron',sans-serif;
  font-size:9px;
  letter-spacing:2px;
@@ -439,19 +409,11 @@ header{
 
 <body>
 
-<!-- LOGIN -->
-
 <div class="login-screen" id="loginScreen">
  <div class="login-card">
 
-  <div class="login-logo">
-   DARK <span>CLIENT</span>
-  </div>
-
-  <div class="login-subtitle">
-   PREMIUM ACCESS SYSTEM
-  </div>
-
+  <div class="login-logo">DARK <span>CLIENT</span></div>
+  <div class="login-subtitle">PREMIUM ACCESS SYSTEM</div>
   <div class="login-line"></div>
 
   <div class="login-title">ENTER YOUR KEY</div>
@@ -464,9 +426,8 @@ header{
    type="text"
    id="keyInput"
    class="key-input"
-   placeholder="******"
-   maxlength="6"
-   inputmode="numeric"
+   placeholder="ENTER ACCESS KEY"
+   maxlength="30"
    autocomplete="off"
   >
 
@@ -476,130 +437,310 @@ header{
 
   <div class="login-error" id="loginError"></div>
 
-  <div class="login-footer">
-   DARK CLIENT SECURITY
-  </div>
-
+  <div class="login-footer">DARK CLIENT SECURITY</div>
  </div>
 </div>
-
-<!-- MAIN APP -->
 
 <div class="app" id="mainApp">
 
 <header>
  <div class="brand">DARK <span>CLIENT</span></div>
- <div class="status">CONNECTED</div>
+ <div class="status" id="statusText">CONNECTED</div>
 </header>
 
-<button class="copy" id="copyConfig">
- COPY CONFIG
-</button>
+<button class="copy" id="copyConfig">COPY CONFIG</button>
 
 <nav class="tabs">
  <button class="tab active" data-tab="features">FEATURES</button>
  <button class="tab" data-tab="settings">SETTINGS</button>
 </nav>
 
-<!-- FEATURES -->
-
 <section class="section active" id="features">
+ <div class="grid">
 
-<div class="grid">
-
- <div class="tile">
-
-  <div class="name">AIMBOT</div>
-
-  <div class="toggleline">
-   <input class="switch" type="checkbox">
-   <span>OFF</span>
-  </div>
-
-  <div class="headshot-control">
-
-   <div class="headshot-heading">
-    <span>HEADSHOT RATE</span>
-    <span id="headshotValue">0%</span>
+  <div class="tile">
+   <div class="name">AIMBOT</div>
+   <div class="toggleline">
+    <input class="switch" type="checkbox">
+    <span>OFF</span>
    </div>
 
-   <input
-    type="range"
-    id="headshotSlider"
-    min="0"
-    max="100"
-    value="0"
-    class="headshot-slider"
-   >
+   <div class="headshot-control">
+    <div class="headshot-heading">
+     <span>HEADSHOT RATE</span>
+     <span id="headshotValue">0%</span>
+    </div>
 
-   <div id="headshotWarning" class="headshot-warning">
-    70 percent or more can be banned or blacklisted
+    <input type="range" id="headshotSlider"
+     min="0" max="100" value="0"
+     class="headshot-slider">
+
+    <div id="headshotWarning" class="headshot-warning">
+     70 percent or more can be banned or blacklisted
+    </div>
    </div>
-
   </div>
- </div>
 
- <div class="tile">
-  <div class="name">ESP MOCO (BLACK LIST)</div>
-  <div class="toggleline">
-   <input class="switch" type="checkbox">
-   <span>OFF</span>
+  <div class="tile">
+   <div class="name">ESP MOCO (BLACK LIST)</div>
+   <div class="toggleline">
+    <input class="switch" type="checkbox">
+    <span>OFF</span>
+   </div>
   </div>
- </div>
 
- <div class="tile">
-  <div class="name">FAST MEDKIT</div>
-  <div class="toggleline">
-   <input class="switch" type="checkbox">
-   <span>OFF</span>
+  <div class="tile">
+   <div class="name">FAST MEDKIT</div>
+   <div class="toggleline">
+    <input class="switch" type="checkbox">
+    <span>OFF</span>
+   </div>
   </div>
- </div>
 
- <div class="tile">
-  <div class="name">FAST REVIVE</div>
-  <div class="toggleline">
-   <input class="switch" type="checkbox">
-   <span>OFF</span>
+  <div class="tile">
+   <div class="name">FAST REVIVE</div>
+   <div class="toggleline">
+    <input class="switch" type="checkbox">
+    <span>OFF</span>
+   </div>
   </div>
- </div>
 
-</div>
+ </div>
 </section>
 
-<!-- SETTINGS -->
-
 <section class="section" id="settings">
-
  <div class="settings-card">
-
   <div class="name">HAPP PROXY</div>
 
   <p class="description">
    Download Happ Android Application.
   </p>
 
-  <a
-   class="download"
+  <a class="download"
    href="https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk"
-   target="_blank"
-   rel="noopener noreferrer"
-  >
+   target="_blank" rel="noopener noreferrer">
    HAPP DOWNLOAD
   </a>
-
  </div>
-
 </section>
 
-<!-- TELEGRAM -->
-
-<a
- class="telegram-button"
+<a class="telegram-button"
  href="https://t.me/dark_client11"
- target="_blank"
- rel="noopener noreferrer"
->
- <svg viewBox="0 0 24 24" aria-hidden="true">
+ target="_blank" rel="noopener noreferrer">
+
+ <svg viewBox="0 0 24 24">
+  <path d="M22 2L2 9.5l7.5 2.8L12.3 20 22 2zM9.5 12.3L18 5.5l-6.5 8.1-.5 4.2-1.5-5.5z"/>
+ </svg>
+
+ TELEGRAM CHANNEL
+</a>
+
+<div class="footer">DARK CLIENT - PURPLE EDITION</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+/*
+ IMPORTANT:
+ Paste the complete old numerical key list
+ from your original validKeys Set below.
+ Do not delete or change any of the old keys.
+*/
+
+const oldKeys = `
+PASTE_YOUR_OLD_NUMERICAL_KEYS_HERE
+`;
+
+const validKeys = new Set(
+ oldKeys.trim().split(/\s+/).filter(k=>/^\d{6}$/.test(k))
+);
+
+// Universal key: 3 hours
+const UNIVERSAL_KEY = "DARK-CLIENT-3H";
+const ACCESS_DURATION = 3 * 60 * 60 * 1000;
+
+const loginScreen = document.getElementById("loginScreen");
+const mainApp = document.getElementById("mainApp");
+const keyInput = document.getElementById("keyInput");
+const loginError = document.getElementById("loginError");
+
+let expiryTimer;
+
+function showToast(message){
+ const toast = document.getElementById("toast");
+ toast.textContent = message;
+ toast.classList.add("show");
+
+ clearTimeout(window.toastTimer);
+
+ window.toastTimer = setTimeout(()=>{
+  toast.classList.remove("show");
+ },2200);
+}
+
+function isAccessValid(){
+ const expiry = Number(
+  localStorage.getItem("darkClientExpiry")
+ );
+
+ return expiry > Date.now();
+}
+
+function showLogin(){
+ clearTimeout(expiryTimer);
+
+ localStorage.removeItem("darkClientExpiry");
+
+ mainApp.classList.remove("unlocked");
+ loginScreen.style.display = "flex";
+
+ loginError.textContent = "SESSION EXPIRED";
+}
+
+function activateApp(expiry){
+ loginScreen.style.display = "none";
+ mainApp.classList.add("unlocked");
+
+ clearTimeout(expiryTimer);
+
+ expiryTimer = setTimeout(()=>{
+  showLogin();
+  showToast("ACCESS EXPIRED");
+ },Math.max(0,expiry-Date.now()));
+
+ document.getElementById("statusText").textContent =
+  "CONNECTED - ACCESS ACTIVE";
+}
+
+function unlockClient(){
+
+ const key = keyInput.value.trim().toUpperCase();
+
+ if(!validKeys.has(key) && key !== UNIVERSAL_KEY){
+  loginError.textContent = "INVALID ACCESS KEY";
+  keyInput.value = "";
+  keyInput.focus();
+  return;
+ }
+
+ const expiry = Date.now() + ACCESS_DURATION;
+
+ localStorage.setItem("darkClientExpiry",String(expiry));
+
+ loginError.textContent = "";
+ keyInput.value = "";
+
+ activateApp(expiry);
+ showToast("ACCESS GRANTED - 3 HOURS");
+}
+
+document.getElementById("unlockBtn")
+ .addEventListener("click",unlockClient);
+
+keyInput.addEventListener("keydown",e=>{
+ if(e.key === "Enter") unlockClient();
+});
+
+// Check saved session
+if(isAccessValid()){
+ activateApp(
+  Number(localStorage.getItem("darkClientExpiry"))
+ );
+}else{
+ showLogin();
+}
+
+// Tabs
+const tabs = document.querySelectorAll(".tab");
+
+tabs.forEach(btn=>{
+ btn.addEventListener("click",()=>{
+
+  tabs.forEach(t=>{
+   t.classList.toggle("active",t===btn);
+  });
+
+  document.querySelectorAll(".section").forEach(s=>{
+   s.classList.toggle("active",s.id===btn.dataset.tab);
+  });
+
+ });
+});
+
+// Switches
+document.querySelectorAll(".switch").forEach(sw=>{
+
+ const label = sw.parentElement.querySelector("span");
+
+ function update(){
+  label.textContent = sw.checked ? "ON" : "OFF";
+ }
+
+ sw.addEventListener("change",update);
+ update();
+
+});
+
+// Headshot slider
+const slider = document.getElementById("headshotSlider");
+const valueDisplay = document.getElementById("headshotValue");
+const warning = document.getElementById("headshotWarning");
+
+slider.addEventListener("input",()=>{
+
+ const value = Number(slider.value);
+
+ valueDisplay.textContent = value + "%";
+
+ warning.classList.toggle("show",value >= 70);
+
+});
+
+// Copy config
+const config = `happ://crypt5/fzvd6FshKegBAZ0OHwjznxRD13ayHa6O22n322NHX4dRWoaQV/hkyRJeSQ5eTYoQIvkXT6C9iqIKsfdHkWIHy2UlXccd+3pSne24fs7lmlrh/LKiLmzZshRjqUUQip2hIIaS7uurF1RbRddERy+93y6IDSPElLcCrA6iDC==gBuA3MJGyNTbfbvOhXSUWmfICAr3wzilggWZ66Ub/apRxlTjqszlz1sKPiSh91sPRPtGAaELtfuu0seKumIp1/hgvkt2klx3FGCjkt7qQw/2PhcQzxClif+XkSiY+BH9Vukcw3fB1yaH94ql/oTx+Lfa175GBDOXSkxRH7jC8baP524bTjO1XMHo9cYDCF8yMBob2u3bQhRCh6fOzouqFWt6PVg3ciZSqc9/qgBrkiiId7u1kTVvudpQCFJrjrtSHoxQeSt3UlpFGcZzKpy7hRuWLq/VyyO6qoyY5kcnAtJ7eBcfyx9/zoDuR4LYsbQ8XiRZOjg4jFPdBtsHTKah6C+3riQ3dvWqLFaMsxYRm6qw+t2IhiDSCvNHsEgSdOiPa1ZYadv0OyXQtWfC0ssOu0Ik1IYiMWZl2liAyHZ9Yx2jMRpW4s94gZXi3OrQHEUrG+NFrd7zKIFpeqZUOhp065Svl7OcVruIdsRqz/Atlw3nQvzy12IB2xTltS6ybb3qCwADzNNHGu219GQP9oaHkfvxlRDS+z/bRdunyf0/+BxghXu9eGZNqySPmgru9VsYDN3Z/MGghI0YlXJOHGGcRnC9vMrZ2rkfpr8Kj3qOVN9XBCvLuc2yal6A3fsZXK9XnU7OW3pIqEWK6mfBwN9H22XoQWMZEwxwtZd0Sji9fog=`;
+
+document.getElementById("copyConfig").addEventListener("click",async()=>{
+
+ if(!isAccessValid()){
+  showLogin();
+  return;
+ }
+
+ try{
+  await navigator.clipboard.writeText(config);
+  showToast("CONFIG COPIED");
+ }catch(e){
+
+  const textarea = document.createElement("textarea");
+  textarea.value = config;
+
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  const copied = document.execCommand("copy");
+  textarea.remove();
+
+  showToast(copied ? "CONFIG COPIED" : "COPY FAILED");
+ }
+});
+
+// Recheck session when returning to the page
+document.addEventListener("visibilitychange",()=>{
+ if(!document.hidden){
+  if(isAccessValid()){
+   activateApp(Number(localStorage.getItem("darkClientExpiry")));
+  }else{
+   showLogin();
+  }
+ }
+});
+
+</script>
+</body>
+</html>
+ox="0 0 24 24" aria-hidden="true">
   <path d="M22 2L2 9.5l7.5 2.8L12.3 20 22 2zM9.5 12.3L18 5.5l-6.5 8.1-.5 4.2-1.5-5.5z"/>
  </svg>
  TELEGRAM CHANNEL
