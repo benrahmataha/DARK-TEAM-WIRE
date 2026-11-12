@@ -4,556 +4,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#100817">
-<title>DARK CLIENT</title>
+<meta name="theme-color" content="#160d24">
+<title>DARK CLIENT - Maintenance</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
- background:
- radial-gradient(circle at 10% 0%,#70258a55,transparent 35%),
- radial-gradient(circle at 90% 90%,#d33bba22,transparent 35%),
- #09070e;
- color:white;
- font-family:'Rajdhani',sans-serif;
- min-height:100vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.app{
- max-width:680px;
- margin:auto;
- padding:22px 15px 35px;
- display:none;
-}
-.app.unlocked{display:block}
-
-.login-screen{
- min-height:100vh;
- display:flex;
- align-items:center;
- justify-content:center;
- padding:20px;
-}
-
-.login-card{
- width:100%;
- max-width:390px;
- padding:32px 24px;
- text-align:center;
- background:linear-gradient(145deg,#281532,#100b18);
- border:1px solid #a34ac5;
- border-radius:24px;
- box-shadow:0 10px 40px #0007,0 0 25px #a52bff22;
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background:
+    radial-gradient(circle at 20% 20%, #702c9b55, transparent 40%),
+    radial-gradient(circle at 80% 80%, #e44cba33, transparent 40%),
+    #100a19;
+    overflow: hidden;
 }
 
-.login-logo,.brand{
- font-family:'Orbitron',sans-serif;
- font-weight:900;
- letter-spacing:3px;
-}
-.login-logo{font-size:27px}
-.login-logo span,.brand span{color:#df59df}
-
-.login-subtitle{
- margin-top:12px;
- color:#c47be9;
- font-family:'Orbitron',sans-serif;
- font-size:10px;
- letter-spacing:3px;
+.glow {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: #a52eea;
+    filter: blur(120px);
+    opacity: .25;
+    animation: float 5s infinite alternate;
 }
 
-.login-line{
- width:65px;height:3px;
- margin:24px auto;
- border-radius:10px;
- background:linear-gradient(90deg,#8625c5,#ed45cf);
+.glow.one {
+    top: -100px;
+    left: -80px;
 }
 
-.login-title{
- font-family:'Orbitron',sans-serif;
- font-size:15px;
- letter-spacing:2px;
- margin-bottom:10px;
+.glow.two {
+    bottom: -100px;
+    right: -80px;
+    background: #ec49c3;
 }
 
-.login-description{
- color:#b3a1bd;
- font-size:15px;
- margin-bottom:24px;
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(45px); }
 }
 
-.key-input{
- width:100%;
- padding:17px 12px;
- border-radius:12px;
- border:1px solid #85429c;
- outline:none;
- background:#0c0811;
- color:white;
- text-align:center;
- font-family:'Orbitron',sans-serif;
- font-size:15px;
- letter-spacing:2px;
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    padding: 35px 25px;
+    text-align: center;
+    background: rgba(35, 20, 49, .85);
+    border: 1px solid rgba(207, 111, 255, .35);
+    border-radius: 25px;
+    box-shadow: 0 0 35px #a52eea25,
+                inset 0 0 25px #d84bff0a;
+    backdrop-filter: blur(15px);
+    animation: appear .8s ease;
 }
 
-.key-input:focus{
- border-color:#e04de0;
- box-shadow:0 0 15px #a52bff44;
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.unlock-btn,.copy,.download,.telegram-button{
- background:linear-gradient(110deg,#8625c5,#d43ac7,#e65ab9);
- color:white;
- font-family:'Orbitron',sans-serif;
- font-weight:800;
- cursor:pointer;
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #c77aff, #ff79d2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
 }
 
-.unlock-btn{
- width:100%;
- margin-top:17px;
- padding:17px;
- border:0;
- border-radius:12px;
- font-size:12px;
- letter-spacing:2px;
+.icon {
+    font-size: 55px;
+    margin-bottom: 18px;
+    animation: rotate 4s linear infinite;
+    display: inline-block;
 }
 
-.unlock-btn:active,.copy:active{transform:scale(.98)}
-
-.login-error{
- min-height:20px;
- margin-top:16px;
- color:#ff557c;
- font-family:'Orbitron',sans-serif;
- font-size:10px;
- letter-spacing:1px;
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
-.login-footer{
- margin-top:25px;
- color:#75667e;
- font-family:'Orbitron',sans-serif;
- font-size:9px;
- letter-spacing:2px;
+h2 {
+    font-size: 21px;
+    margin-bottom: 17px;
+    color: #f2c8ff;
 }
 
-header{
- padding:22px 8px;
- border-bottom:1px solid #38213f;
+.message {
+    background: rgba(160, 79, 195, .12);
+    border: 1px solid #bd6be85c;
+    border-radius: 15px;
+    padding: 20px 15px;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    font-size: 14px;
 }
 
-.brand{font-size:25px}
-
-.status{
- margin-top:10px;
- font-family:'Orbitron',sans-serif;
- font-size:10px;
- letter-spacing:3px;
- color:#d47be9;
+.arabic {
+    direction: rtl;
+    color: #f3b9e8;
 }
 
-.copy{
- width:100%;
- margin:22px 0 12px;
- padding:18px;
- border:1px solid #a53ac7;
- border-radius:14px;
- font-size:12px;
- letter-spacing:2px;
+.maintenance {
+    display: inline-block;
+    padding: 7px 15px;
+    border-radius: 30px;
+    background: #a83cba22;
+    border: 1px solid #d45cda77;
+    color: #efa3ff;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
 }
 
-.tabs{
- display:flex;
- gap:9px;
- padding:7px;
- margin:22px 0;
- background:#100b16;
- border:1px solid #493052;
- border-radius:14px;
+.telegram {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    background: linear-gradient(100deg, #873bd1, #e34ab5);
+    box-shadow: 0 5px 20px #c144d64c;
+    transition: .3s;
 }
 
-.tab{
- flex:1;
- padding:15px 5px;
- border:0;
- border-radius:10px;
- background:transparent;
- color:#a99bb0;
- font-family:'Orbitron',sans-serif;
- font-size:11px;
- font-weight:700;
- cursor:pointer;
+.telegram:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px #df55d988;
 }
 
-.tab.active{
- background:linear-gradient(110deg,#8625c5,#d13ac7);
- color:white;
- box-shadow:0 0 18px #a52bff44;
-}
-
-.section{display:none}
-.section.active{display:block}
-
-.grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px;
-}
-
-.tile{
- min-height:150px;
- padding:19px;
- display:flex;
- flex-direction:column;
- justify-content:space-between;
- background:linear-gradient(145deg,#26152f,#100b16);
- border:1px solid #713b83;
- border-radius:17px;
- box-shadow:0 0 15px #a52bff12;
-}
-
-.name{
- font-family:'Orbitron',sans-serif;
- font-size:12px;
- font-weight:700;
- line-height:1.8;
- letter-spacing:1px;
-}
-
-.toggleline{
- display:flex;
- align-items:center;
- gap:12px;
- color:#d78aff;
- font-family:'Orbitron',sans-serif;
- font-size:10px;
- letter-spacing:2px;
-}
-
-.switch{
- appearance:none;
- width:45px;
- height:24px;
- border-radius:20px;
- background:#39313f;
- position:relative;
- cursor:pointer;
- flex-shrink:0;
-}
-
-.switch:before{
- content:"";
- position:absolute;
- width:16px;
- height:16px;
- left:4px;
- top:4px;
- border-radius:50%;
- background:#aaa;
- transition:.2s;
-}
-
-.switch:checked{
- background:linear-gradient(90deg,#8e20d3,#ed45cf);
-}
-
-.switch:checked:before{
- left:25px;
- background:white;
-}
-
-.headshot-control{
- margin-top:18px;
- padding-top:14px;
- border-top:1px solid #49304f;
-}
-
-.headshot-heading{
- display:flex;
- justify-content:space-between;
- align-items:center;
- color:#d78aff;
- font-family:'Orbitron',sans-serif;
- font-size:9px;
- letter-spacing:1px;
-}
-
-#headshotValue{
- color:#ed45cf;
- font-size:13px;
-}
-
-.headshot-slider{
- appearance:none;
- width:100%;
- height:5px;
- margin-top:20px;
- border-radius:10px;
- background:#49304f;
- outline:none;
- cursor:pointer;
-}
-
-.headshot-slider::-webkit-slider-thumb{
- appearance:none;
- width:17px;height:17px;
- border-radius:50%;
- background:#d946e9;
- border:2px solid white;
-}
-
-.headshot-warning{
- display:none;
- margin-top:14px;
- padding:11px;
- border-radius:8px;
- background:#421626;
- border:1px solid #ff557c;
- color:#ff7799;
- font-family:'Orbitron',sans-serif;
- font-size:9px;
- line-height:1.8;
- text-align:center;
-}
-
-.headshot-warning.show{display:block}
-
-.settings-card{
- padding:22px;
- background:linear-gradient(145deg,#26152f,#100b16);
- border:1px solid #713b83;
- border-radius:17px;
-}
-
-.download{
- display:block;
- text-align:center;
- text-decoration:none;
- margin-top:20px;
- padding:18px;
- border-radius:12px;
- font-size:11px;
- letter-spacing:2px;
-}
-
-.description{
- color:#b3a1bd;
- font-size:15px;
- margin-top:12px;
-}
-
-.telegram-button{
- display:flex;
- align-items:center;
- justify-content:center;
- gap:12px;
- width:100%;
- margin-top:22px;
- padding:17px;
- border-radius:12px;
- border:1px solid #bd65e9;
- text-decoration:none;
- font-size:11px;
- letter-spacing:2px;
-}
-
-.telegram-button svg{
- width:22px;height:22px;
- fill:white;
-}
-
-.footer{
- text-align:center;
- margin-top:30px;
- color:#95829e;
- font-family:'Orbitron',sans-serif;
- font-size:9px;
- letter-spacing:2px;
-}
-
-.toast{
- position:fixed;
- bottom:25px;
- left:50%;
- transform:translate(-50%,20px);
- opacity:0;
- background:#291532;
- border:1px solid #b84cff;
- padding:13px 20px;
- border-radius:10px;
- font-family:'Orbitron',sans-serif;
- font-size:10px;
- transition:.2s;
- pointer-events:none;
- z-index:100;
- text-align:center;
-}
-
-.toast.show{
- opacity:1;
- transform:translate(-50%,0);
-}
-
-@media(max-width:390px){
- .brand{font-size:21px}
- .grid{gap:9px}
- .tile{padding:14px}
- .name{font-size:10px}
+.footer {
+    margin-top: 23px;
+    font-size: 10px;
+    color: #a98bad;
+    letter-spacing: 1px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="login-screen" id="loginScreen">
- <div class="login-card">
+<div class="glow one"></div>
+<div class="glow two"></div>
 
-  <div class="login-logo">DARK <span>CLIENT</span></div>
-  <div class="login-subtitle">PREMIUM ACCESS SYSTEM</div>
-  <div class="login-line"></div>
+<div class="container">
 
-  <div class="login-title">ENTER YOUR KEY</div>
+    <div class="logo">DARK CLIENT</div>
 
-  <p class="login-description">
-   Enter your access key to unlock the client.
-  </p>
+    <div class="icon">⚙️</div>
 
-  <input
-   type="text"
-   id="keyInput"
-   class="key-input"
-   placeholder="ENTER ACCESS KEY"
-   maxlength="30"
-   autocomplete="off"
-  >
+    <div class="maintenance">● UNDER MAINTENANCE</div>
 
-  <button class="unlock-btn" id="unlockBtn">
-   UNLOCK CLIENT
-  </button>
+    <h2>Website Maintenance</h2>
 
-  <div class="login-error" id="loginError"></div>
-
-  <div class="login-footer">DARK CLIENT SECURITY</div>
- </div>
-</div>
-
-<div class="app" id="mainApp">
-
-<header>
- <div class="brand">DARK <span>CLIENT</span></div>
- <div class="status" id="statusText">CONNECTED</div>
-</header>
-
-<button class="copy" id="copyConfig">COPY CONFIG</button>
-
-<nav class="tabs">
- <button class="tab active" data-tab="features">FEATURES</button>
- <button class="tab" data-tab="settings">SETTINGS</button>
-</nav>
-
-<section class="section active" id="features">
- <div class="grid">
-
-  <div class="tile">
-   <div class="name">AIMBOT</div>
-   <div class="toggleline">
-    <input class="switch" type="checkbox">
-    <span>OFF</span>
-   </div>
-
-   <div class="headshot-control">
-    <div class="headshot-heading">
-     <span>HEADSHOT RATE</span>
-     <span id="headshotValue">0%</span>
+    <div class="message">
+        The website is currently under maintenance.
+        Join our Telegram group to receive updates
+        ✅🙏
     </div>
 
-    <input type="range" id="headshotSlider"
-     min="0" max="100" value="0"
-     class="headshot-slider">
-
-    <div id="headshotWarning" class="headshot-warning">
-     70 percent or more can be banned or blacklisted
+    <div class="message arabic">
+        الموقع قيد الصيانة حالياً.
+        ادخل إلى قناة التيليغرام لتلقي التحديثات 🙏✅
     </div>
-   </div>
-  </div>
 
-  <div class="tile">
-   <div class="name">ESP MOCO (BLACK LIST)</div>
-   <div class="toggleline">
-    <input class="switch" type="checkbox">
-    <span>OFF</span>
-   </div>
-  </div>
+    <a class="telegram"
+       href="https://t.me/dark_client11"
+       target="_blank">
+       ✈ JOIN TELEGRAM
+    </a>
 
-  <div class="tile">
-   <div class="name">FAST MEDKIT</div>
-   <div class="toggleline">
-    <input class="switch" type="checkbox">
-    <span>OFF</span>
-   </div>
-  </div>
+    <div class="footer">
+        © 2026 DARK CLIENT • ALL RIGHTS RESERVED
+    </div>
 
-  <div class="tile">
-   <div class="name">FAST REVIVE</div>
-   <div class="toggleline">
-    <input class="switch" type="checkbox">
-    <span>OFF</span>
-   </div>
-  </div>
-
- </div>
-</section>
-
-<section class="section" id="settings">
- <div class="settings-card">
-  <div class="name">HAPP PROXY</div>
-
-  <p class="description">
-   Download Happ Android Application.
-  </p>
-
-  <a class="download"
-   href="https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk"
-   target="_blank" rel="noopener noreferrer">
-   HAPP DOWNLOAD
-  </a>
- </div>
-</section>
-
-<a class="telegram-button"
- href="https://t.me/dark_client11"
- target="_blank" rel="noopener noreferrer">
-
- <svg viewBox="0 0 24 24">
-  <path d="M22 2L2 9.5l7.5 2.8L12.3 20 22 2zM9.5 12.3L18 5.5l-6.5 8.1-.5 4.2-1.5-5.5z"/>
- </svg>
-
- TELEGRAM CHANNEL
-</a>
-
-<div class="footer">DARK CLIENT - PURPLE EDITION</div>
 </div>
 
-<div class="toast" id="toast"></div>
-
-<script>
-
-/*
- IMPORTANT:
- Paste the complete old numerical key list
- from your original validKeys Set below.
- Do not delete or change any of the old keys.
-*/
-
-const oldKeys = `
-PASTE_YOUR_OLD_NUMERICAL_KEYS_HERE
-`;
-
-const validKeys = new Set(
+</body>
+</html>
+dKeys = new Set(
  oldKeys.trim().split(/\s+/).filter(k=>/^\d{6}$/.test(k))
 );
 
