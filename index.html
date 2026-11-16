@@ -2,527 +2,634 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#160d24">
-<title>DARK CLIENT - Maintenance</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<title>TAHA ALONE — Premium Gaming Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root{
+--bg:#080808;--red:#ff0033;--deep:#8b0000;
+--fg:#f4eeee;--muted:#9a8e8e;--card:#141010;
+--border:#2e1f20;--ok:#3ddc84;
+--grad:linear-gradient(135deg,var(--red),var(--deep));
+--glow:0 0 0 1px rgba(255,0,51,.6),0 10px 40px -8px rgba(255,0,51,.55);
+--soft:0 0 24px -6px rgba(255,0,51,.45);
 }
-
-body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    background:
-    radial-gradient(circle at 20% 20%, #702c9b55, transparent 40%),
-    radial-gradient(circle at 80% 80%, #e44cba33, transparent 40%),
-    #100a19;
-    overflow: hidden;
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--fg);font-family:"Chakra Petch",system-ui,sans-serif;min-height:100dvh}
+body{
+background:radial-gradient(120% 60% at 50% -10%,rgba(255,0,51,.22),transparent 60%),radial-gradient(80% 50% at 100% 110%,rgba(139,0,0,.3),transparent 70%),var(--bg);
+overflow-x:hidden;
 }
-
-.glow {
-    position: absolute;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background: #a52eea;
-    filter: blur(120px);
-    opacity: .25;
-    animation: float 5s infinite alternate;
+body::before{
+content:"";position:fixed;inset:0;pointer-events:none;
+background-image:linear-gradient(rgba(255,0,51,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,0,51,.07) 1px,transparent 1px);
+background-size:32px 32px;
+mask-image:radial-gradient(ellipse at center,#000 30%,transparent 75%);
 }
-
-.glow.one {
-    top: -100px;
-    left: -80px;
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.hidden{display:none!important}
+.wrap{position:relative;max-width:36rem;margin:0 auto;padding:1.25rem 1.25rem 7rem;min-height:100dvh;display:flex;flex-direction:column}
+.center{justify-content:center;padding-bottom:2.5rem;max-width:24rem}
+.title{
+font-family:"Russo One",sans-serif;letter-spacing:.08em;line-height:1;
+font-size:clamp(2.6rem,12vw,3.75rem);
+background:linear-gradient(180deg,var(--fg) 30%,var(--red) 130%);
+-webkit-background-clip:text;background-clip:text;color:transparent;
+text-shadow:0 0 40px rgba(255,0,51,.35);text-align:center;
 }
-
-.glow.two {
-    bottom: -100px;
-    right: -80px;
-    background: #ec49c3;
+.label{font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.75rem;color:var(--muted)}
+.sub{text-align:center;margin-top:1rem}
+.card{background:linear-gradient(160deg,#1d1314,#110d0d);border:1px solid var(--border);border-radius:14px;padding:1.25rem}
+.btn{
+display:flex;align-items:center;justify-content:center;gap:.6rem;
+width:100%;height:3.5rem;border-radius:10px;
+font-family:"Russo One",sans-serif;letter-spacing:.14em;font-size:1rem;
+color:#fff;background:var(--grad);box-shadow:var(--glow);
+transition:transform .15s,filter .25s;
 }
-
-@keyframes float {
-    from { transform: translateY(0); }
-    to { transform: translateY(45px); }
+.btn:hover{filter:brightness(1.12)}
+.btn:active{transform:scale(.97)}
+.btn.big{height:4rem;font-size:1.15rem;animation:pulse 2.4s ease-in-out infinite}
+.ghost{
+display:flex;align-items:center;justify-content:center;gap:.4rem;
+height:2.4rem;padding:0 .8rem;border-radius:10px;
+font-weight:600;letter-spacing:.14em;font-size:.7rem;
+border:1px solid rgba(255,0,51,.45);background:rgba(255,0,51,.08);
 }
-
-.container {
-    position: relative;
-    width: 100%;
-    max-width: 430px;
-    padding: 35px 25px;
-    text-align: center;
-    background: rgba(35, 20, 49, .85);
-    border: 1px solid rgba(207, 111, 255, .35);
-    border-radius: 25px;
-    box-shadow: 0 0 35px #a52eea25,
-                inset 0 0 25px #d84bff0a;
-    backdrop-filter: blur(15px);
-    animation: appear .8s ease;
+.ghost.full{width:100%;height:2.75rem}
+input{
+width:100%;height:3.5rem;padding:0 1rem;border-radius:10px;
+border:1px solid var(--border);background:rgba(8,8,8,.7);
+color:var(--fg);font:inherit;letter-spacing:.12em;font-size:.9rem;
+transition:border-color .2s,box-shadow .2s;
 }
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+input::placeholder{color:var(--muted);letter-spacing:.16em}
+input:focus{outline:none;border-color:var(--red);box-shadow:var(--soft)}
+.stack>*+*{margin-top:1rem}
+.msg{min-height:1.25rem;text-align:center;font-weight:600;letter-spacing:.2em;font-size:.75rem;color:var(--red)}
+.msg.ok{color:var(--ok)}
+.logo{
+width:4rem;height:4rem;border-radius:16px;margin:0 auto 1.5rem;
+display:grid;place-items:center;background:var(--grad);
+box-shadow:var(--glow);font-family:"Russo One";font-size:1.4rem;
+animation:pulse 2.4s ease-in-out infinite;
 }
-
-.logo {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 27px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, #c77aff, #ff79d2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 30px;
+header{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:.5rem;font-family:"Russo One";letter-spacing:.16em;font-size:.85rem}
+.brand i{
+width:2.25rem;height:2.25rem;border-radius:8px;background:var(--grad);
+display:grid;place-items:center;font-style:normal;box-shadow:var(--glow);
 }
-
-.icon {
-    font-size: 55px;
-    margin-bottom: 18px;
-    animation: rotate 4s linear infinite;
-    display: inline-block;
+.pill{display:inline-block;padding:.3rem .8rem;border-radius:999px;border:1px solid rgba(255,0,51,.4);background:rgba(255,0,51,.1);color:var(--red);font-size:.65rem}
+.hero{margin-top:2.5rem;text-align:center}
+.hero .btn{margin-top:2rem}
+.section{margin-top:2.5rem;scroll-margin-top:1.5rem;animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+.row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.h2{font-family:"Russo One";letter-spacing:.14em;font-size:1.1rem}
+.feature{
+display:flex;align-items:center;gap:.75rem;width:100%;padding:1rem;
+border-radius:10px;text-align:left;border:1px solid var(--border);
+background:rgba(8,8,8,.6);transition:all .2s;
 }
-
-@keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.feature+.feature{margin-top:.75rem}
+.feature span.name{flex:1;font-weight:600;letter-spacing:.12em;font-size:.9rem}
+.track{
+position:relative;width:3rem;height:1.6rem;border-radius:999px;
+background:#241b1b;border:1px solid var(--border);flex-shrink:0;transition:background .25s;
 }
-
-h2 {
-    font-size: 21px;
-    margin-bottom: 17px;
-    color: #f2c8ff;
+.track::after{
+content:"";position:absolute;top:50%;left:.2rem;width:1.15rem;height:1.15rem;
+border-radius:999px;background:var(--muted);transform:translateY(-50%);
+transition:transform .25s cubic-bezier(.5,1.6,.4,1),background .25s;
 }
-
-.message {
-    background: rgba(160, 79, 195, .12);
-    border: 1px solid #bd6be85c;
-    border-radius: 15px;
-    padding: 20px 15px;
-    margin-bottom: 15px;
-    line-height: 1.8;
-    font-size: 14px;
+.feature[aria-checked="true"]{border-color:var(--red);background:rgba(255,0,51,.1);box-shadow:var(--soft)}
+.feature[aria-checked="true"] .track{background:var(--grad);border-color:var(--red)}
+.feature[aria-checked="true"] .track::after{transform:translate(1.35rem,-50%);background:#fff}
+.info{padding:0}
+.info div{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem}
+.info div+div{border-top:1px solid var(--border)}
+.info b{font-family:"Russo One";letter-spacing:.12em;font-weight:400;font-size:.9rem}
+.settings-note{
+margin-top:1rem;padding:1rem;border:1px solid var(--border);
+border-radius:10px;background:rgba(8,8,8,.55);
+color:var(--muted);font-size:.8rem;line-height:1.6;text-align:center;
 }
-
-.arabic {
-    direction: rtl;
-    color: #f3b9e8;
+footer{margin-top:auto;padding-top:3rem;text-align:center}
+footer p:first-child{font-family:"Russo One";letter-spacing:.18em;font-size:.75rem;color:var(--muted)}
+footer p:last-child{margin-top:.25rem;font-size:.6rem;opacity:.7}
+nav{
+position:fixed;left:0;right:0;bottom:0;z-index:20;
+background:rgba(8,8,8,.85);backdrop-filter:blur(14px);
+border-top:1px solid var(--border);padding-bottom:env(safe-area-inset-bottom);
 }
-
-.maintenance {
-    display: inline-block;
-    padding: 7px 15px;
-    border-radius: 30px;
-    background: #a83cba22;
-    border: 1px solid #d45cda77;
-    color: #efa3ff;
-    font-size: 11px;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
+nav .grid{max-width:36rem;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);height:4rem}
+nav button{
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+gap:.25rem;font-size:.65rem;font-weight:600;letter-spacing:.16em;
+color:var(--muted);transition:color .2s;
 }
-
-.telegram {
-    display: block;
-    width: 100%;
-    padding: 14px;
-    border-radius: 12px;
-    text-decoration: none;
-    color: white;
-    font-weight: 700;
-    font-size: 15px;
-    background: linear-gradient(100deg, #873bd1, #e34ab5);
-    box-shadow: 0 5px 20px #c144d64c;
-    transition: .3s;
-}
-
-.telegram:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px #df55d988;
-}
-
-.footer {
-    margin-top: 23px;
-    font-size: 10px;
-    color: #a98bad;
-    letter-spacing: 1px;
-}
+nav button svg{width:20px;height:20px}
+nav button.active{color:var(--red)}
+.shake{animation:shake .3s ease}
+.rise{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{box-shadow:var(--glow)}50%{box-shadow:var(--glow),0 0 50px -4px rgba(255,0,51,.7)}}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 </style>
 </head>
 
 <body>
 
-<div class="glow one"></div>
-<div class="glow two"></div>
+<main id="login" class="wrap center rise">
+<div class="logo">TA</div>
+<h1 class="title">TAHA ALONE</h1>
+<p class="label sub">WELCOME TO TAHA ALONE PANEL</p>
 
-<div class="container">
+<form id="loginForm" class="card stack" style="margin-top:2rem" novalidate>
+<input id="keyInput" placeholder="ENTER YOUR ACCESS KEY" autocomplete="off" autocapitalize="characters" spellcheck="false">
+<button type="submit" class="btn">LOGIN</button>
+<p id="loginMsg" class="msg" role="status" aria-live="polite"></p>
+</form>
 
-    <div class="logo">DARK CLIENT</div>
+<footer>
+<p>TAHA ALONE © 2026</p>
+<p class="label">ALL RIGHTS RESERVED.</p>
+</footer>
+</main>
 
-    <div class="icon">⚙️</div>
+<div id="dashboard" class="wrap hidden">
 
-    <div class="maintenance">● UNDER MAINTENANCE</div>
+<header>
+<div class="brand"><i>TA</i> TAHA ALONE</div>
+<button id="logoutBtn" class="ghost">LOGOUT</button>
+</header>
 
-    <h2>Website Maintenance</h2>
+<div id="featuresView">
 
-    <div class="message">
-        The website is currently under maintenance.
-        Join our Telegram group to receive updates
-        ✅🙏
-    </div>
+<section class="hero rise">
+<span class="label pill">ACCESS GRANTED</span>
+<h1 class="title" style="margin-top:1.25rem">TAHA ALONE</h1>
+<p class="label" style="margin-top:.75rem">PREMIUM GAMING PANEL</p>
+<button id="downloadFileBtn" class="btn big">⬇ DOWNLOAD FILE</button>
+</section>
 
-    <div class="message arabic">
-        الموقع قيد الصيانة حالياً.
-        ادخل إلى قناة التيليغرام لتلقي التحديثات 🙏✅
-    </div>
-
-    <a class="telegram"
-       href="https://t.me/dark_client11"
-       target="_blank">
-       ✈ JOIN TELEGRAM
-    </a>
-
-    <div class="footer">
-        © 2026 DARK CLIENT • ALL RIGHTS RESERVED
-    </div>
-
+<section id="features" class="section">
+<div class="card">
+<div class="row-head">
+<h2 class="h2">FEATURES</h2>
+<span id="count" class="label" style="font-size:.65rem">0/3 SELECTED</span>
 </div>
 
-</body>
-</html>
-dKeys = new Set(
- oldKeys.trim().split(/\s+/).filter(k=>/^\d{6}$/.test(k))
-);
+<button class="feature" role="switch" aria-checked="false" data-id="aimbot">
+<span class="name">AIMBOT</span><span class="track"></span>
+</button>
 
-// Universal key: 3 hours
-const UNIVERSAL_KEY = "DARK-CLIENT-3H";
-const ACCESS_DURATION = 3 * 60 * 60 * 1000;
+<button class="feature" role="switch" aria-checked="false" data-id="animation">
+<span class="name">ANIMATION RUN</span><span class="track"></span>
+</button>
 
-const loginScreen = document.getElementById("loginScreen");
-const mainApp = document.getElementById("mainApp");
-const keyInput = document.getElementById("keyInput");
-const loginError = document.getElementById("loginError");
+<button class="feature" role="switch" aria-checked="false" data-id="behind">
+<span class="name">HITTING FROM BEHIND</span><span class="track"></span>
+</button>
 
-let expiryTimer;
-
-function showToast(message){
- const toast = document.getElementById("toast");
- toast.textContent = message;
- toast.classList.add("show");
-
- clearTimeout(window.toastTimer);
-
- window.toastTimer = setTimeout(()=>{
-  toast.classList.remove("show");
- },2200);
-}
-
-function isAccessValid(){
- const expiry = Number(
-  localStorage.getItem("darkClientExpiry")
- );
-
- return expiry > Date.now();
-}
-
-function showLogin(){
- clearTimeout(expiryTimer);
-
- localStorage.removeItem("darkClientExpiry");
-
- mainApp.classList.remove("unlocked");
- loginScreen.style.display = "flex";
-
- loginError.textContent = "SESSION EXPIRED";
-}
-
-function activateApp(expiry){
- loginScreen.style.display = "none";
- mainApp.classList.add("unlocked");
-
- clearTimeout(expiryTimer);
-
- expiryTimer = setTimeout(()=>{
-  showLogin();
-  showToast("ACCESS EXPIRED");
- },Math.max(0,expiry-Date.now()));
-
- document.getElementById("statusText").textContent =
-  "CONNECTED - ACCESS ACTIVE";
-}
-
-function unlockClient(){
-
- const key = keyInput.value.trim().toUpperCase();
-
- if(!validKeys.has(key) && key !== UNIVERSAL_KEY){
-  loginError.textContent = "INVALID ACCESS KEY";
-  keyInput.value = "";
-  keyInput.focus();
-  return;
- }
-
- const expiry = Date.now() + ACCESS_DURATION;
-
- localStorage.setItem("darkClientExpiry",String(expiry));
-
- loginError.textContent = "";
- keyInput.value = "";
-
- activateApp(expiry);
- showToast("ACCESS GRANTED - 3 HOURS");
-}
-
-document.getElementById("unlockBtn")
- .addEventListener("click",unlockClient);
-
-keyInput.addEventListener("keydown",e=>{
- if(e.key === "Enter") unlockClient();
-});
-
-// Check saved session
-if(isAccessValid()){
- activateApp(
-  Number(localStorage.getItem("darkClientExpiry"))
- );
-}else{
- showLogin();
-}
-
-// Tabs
-const tabs = document.querySelectorAll(".tab");
-
-tabs.forEach(btn=>{
- btn.addEventListener("click",()=>{
-
-  tabs.forEach(t=>{
-   t.classList.toggle("active",t===btn);
-  });
-
-  document.querySelectorAll(".section").forEach(s=>{
-   s.classList.toggle("active",s.id===btn.dataset.tab);
-  });
-
- });
-});
-
-// Switches
-document.querySelectorAll(".switch").forEach(sw=>{
-
- const label = sw.parentElement.querySelector("span");
-
- function update(){
-  label.textContent = sw.checked ? "ON" : "OFF";
- }
-
- sw.addEventListener("change",update);
- update();
-
-});
-
-// Headshot slider
-const slider = document.getElementById("headshotSlider");
-const valueDisplay = document.getElementById("headshotValue");
-const warning = document.getElementById("headshotWarning");
-
-slider.addEventListener("input",()=>{
-
- const value = Number(slider.value);
-
- valueDisplay.textContent = value + "%";
-
- warning.classList.toggle("show",value >= 70);
-
-});
-
-// Copy config
-const config = `happ://crypt5/fzvd6FshKegBAZ0OHwjznxRD13ayHa6O22n322NHX4dRWoaQV/hkyRJeSQ5eTYoQIvkXT6C9iqIKsfdHkWIHy2UlXccd+3pSne24fs7lmlrh/LKiLmzZshRjqUUQip2hIIaS7uurF1RbRddERy+93y6IDSPElLcCrA6iDC==gBuA3MJGyNTbfbvOhXSUWmfICAr3wzilggWZ66Ub/apRxlTjqszlz1sKPiSh91sPRPtGAaELtfuu0seKumIp1/hgvkt2klx3FGCjkt7qQw/2PhcQzxClif+XkSiY+BH9Vukcw3fB1yaH94ql/oTx+Lfa175GBDOXSkxRH7jC8baP524bTjO1XMHo9cYDCF8yMBob2u3bQhRCh6fOzouqFWt6PVg3ciZSqc9/qgBrkiiId7u1kTVvudpQCFJrjrtSHoxQeSt3UlpFGcZzKpy7hRuWLq/VyyO6qoyY5kcnAtJ7eBcfyx9/zoDuR4LYsbQ8XiRZOjg4jFPdBtsHTKah6C+3riQ3dvWqLFaMsxYRm6qw+t2IhiDSCvNHsEgSdOiPa1ZYadv0OyXQtWfC0ssOu0Ik1IYiMWZl2liAyHZ9Yx2jMRpW4s94gZXi3OrQHEUrG+NFrd7zKIFpeqZUOhp065Svl7OcVruIdsRqz/Atlw3nQvzy12IB2xTltS6ybb3qCwADzNNHGu219GQP9oaHkfvxlRDS+z/bRdunyf0/+BxghXu9eGZNqySPmgru9VsYDN3Z/MGghI0YlXJOHGGcRnC9vMrZ2rkfpr8Kj3qOVN9XBCvLuc2yal6A3fsZXK9XnU7OW3pIqEWK6mfBwN9H22XoQWMZEwxwtZd0Sji9fog=`;
-
-document.getElementById("copyConfig").addEventListener("click",async()=>{
-
- if(!isAccessValid()){
-  showLogin();
-  return;
- }
-
- try{
-  await navigator.clipboard.writeText(config);
-  showToast("CONFIG COPIED");
- }catch(e){
-
-  const textarea = document.createElement("textarea");
-  textarea.value = config;
-
-  document.body.appendChild(textarea);
-  textarea.select();
-
-  const copied = document.execCommand("copy");
-  textarea.remove();
-
-  showToast(copied ? "CONFIG COPIED" : "COPY FAILED");
- }
-});
-
-// Recheck session when returning to the page
-document.addEventListener("visibilitychange",()=>{
- if(!document.hidden){
-  if(isAccessValid()){
-   activateApp(Number(localStorage.getItem("darkClientExpiry")));
-  }else{
-   showLogin();
-  }
- }
-});
-
-</script>
-</body>
-</html>
-ox="0 0 24 24" aria-hidden="true">
-  <path d="M22 2L2 9.5l7.5 2.8L12.3 20 22 2zM9.5 12.3L18 5.5l-6.5 8.1-.5 4.2-1.5-5.5z"/>
- </svg>
- TELEGRAM CHANNEL
-</a>
-
-<div class="footer">
- DARK CLIENT - PURPLE EDITION
+<button id="downloadXBtn" class="btn" style="margin-top:1.25rem">⬇ DOWNLOAD X</button>
+<p id="featureMsg" class="msg" style="margin-top:.75rem" role="status" aria-live="polite"></p>
+</div>
+</section>
 </div>
 
+<!-- SETTINGS -->
+<div id="settingsView" class="hidden">
+<section class="section">
+
+<h1 class="title" style="text-align:left;font-size:2.25rem">SETTINGS</h1>
+<p class="label" style="margin-top:.75rem">PANEL INFORMATION</p>
+
+<div class="card info" style="margin-top:1.5rem">
+<div><span class="label" style="font-size:.65rem">APPLICATION NAME</span><b>TAHA ALONE</b></div>
+<div><span class="label" style="font-size:.65rem">VERSION</span><b>1.0</b></div>
+<div><span class="label" style="font-size:.65rem">DEVELOPER</span><b>TAHA</b></div>
+<div><span class="label" style="font-size:.65rem">PLATFORM</span><b>ANDROID</b></div>
+<div><span class="label" style="font-size:.65rem">STATUS</span><b style="color:var(--ok)">ACTIVE</b></div>
+<div><span class="label" style="font-size:.65rem">LICENSE</span><b>PREMIUM</b></div>
 </div>
 
-<div class="toast" id="toast">CONFIG COPIED</div>
+<div class="card stack" style="margin-top:1.25rem">
+<div style="text-align:center">
+<p class="h2">ZARCHIVER</p>
+<p class="label" style="margin-top:.6rem">ARCHIVE MANAGER FOR ANDROID</p>
+</div>
+
+<button id="zarchiverBtn" class="btn">⬇ DOWNLOAD ZARCHIVER</button>
+<p class="label" style="text-align:center;font-size:.6rem">AVAILABLE ON GOOGLE PLAY</p>
+</div>
+
+<div class="settings-note">
+TAHA ALONE PREMIUM PANEL<br>
+THANK YOU FOR USING OUR APPLICATION
+</div>
+
+</section>
+</div>
+
+<footer>
+<p>TAHA ALONE © 2026</p>
+<p class="label">ALL RIGHTS RESERVED.</p>
+</footer>
+
+<nav>
+<div class="grid">
+<button id="navFeatures" class="active">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+FEATURES
+</button>
+
+<button id="navSettings">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="12" cy="12" r="3"/>
+<path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>
+</svg>
+SETTINGS
+</button>
+
+<button id="navTelegram">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="m22 2-7 20-4-9-9-4 20-7z"/>
+<path d="M22 2 11 13"/>
+</svg>
+TELEGRAM
+</button>
+</div>
+</nav>
+</div>
 
 <script>
+// ===== CONFIG =====
 
-/* ALL ACCESS KEYS */
+const ACCESS_KEYS = new Set(`
+TAHA_ALONE
+646746
+798523
+812766
+185624
+249271
+384599
+336562
+453973
+557741
+595668
+102047
+459051
+366553
+234592
+644662
+507844
+830964
+156252
+722706
+422315
+792958
+177892
+983598
+577185
+338189
+782674
+655862
+694747
+816468
+459864
+910225
+351360
+581387
+187697
+750984
+110802
+339450
+885490
+301124
+288887
+723435
+500498
+279948
+662181
+692480
+961260
+922241
+255360
+526356
+355439
+798797
+821094
+619206
+849167
+970698
+594123
+808401
+483994
+352746
+541577
+504991
+472921
+604073
+700984
+375886
+760910
+572286
+698783
+617104
+700935
+615823
+228201
+914795
+513132
+609842
+382844
+864835
+807081
+223901
+842905
+702503
+255802
+182314
+122577
+329770
+989916
+460154
+858867
+164755
+909520
+735328
+113755
+428236
+987222
+340175
+380917
+905143
+557386
+596543
+291942
+434762
+642014
+322584
+671630
+220102
+388145
+562783
+376857
+946205
+947695
+462950
+250742
+500788
+722330
+108227
+239164
+954612
+774521
+160530
+451581
+753327
+911415
+690641
+301603
+665029
+618712
+118564
+573270
+375168
+509783
+203074
+609550
+442911
+609065
+561162
+201678
+901870
+942957
+548540
+743694
+816456
+455129
+194816
+661310
+306558
+340197
+482128
+459679
+309659
+764888
+760664
+409675
+742171
+834306
+902778
+640511
+640299
+100766
+544590
+785151
+339331
+118518
+424079
+446242
+272788
+465652
+989462
+695126
+239654
+758121
+259395
+284756
+198860
+707911
+318979
+654424
+505488
+615697
+319204
+820930
+245176
+944109
+669781
+317209
+337903
+979860
+103779
+944988
+339348
+507388
+901837
+452732
+562110
+267916
+140899
+136866
+306640
+436051
+771788
+724927
+`.trim().split(/\s+/));
 
-const validKeys = new Set(`
-907997
-127905
-899388
-733572
-859881
-358937
-484786
-315256
-429244
-425940
-793072
-675144
-558508
-945973
-612178
-954167
-469990
-879529
-245173
-804054
-856599
-792417
-934801
-443314
-511270
-927011
-968536
-400602
-279915
-892232
-649329
-948695
-537005
-173795
-998773
-728947
-946850
-297156
-179432
-828677
-768977
-174715
-782367
-193844
-454899
-487279
-316589
-527513
-886630
-109920
-343503
-182490
-492880
-124597
-175753
-896173
-450317
-275287
-540337
-383168
-514424
-229522
-623380
-551368
-851431
-600798
-680294
-828198
-484118
-337604
-144308
-973932
-391965
-801119
-927227
-753161
-272202
-820935
-940603
-203626
-488973
-140987
-185834
-231565
-896321
-634404
-299530
-299851
-298667
-746377
-721027
-674893
-144963
-923436
-746171
-910100
-892437
-203124
-841504
-560746
-533143
-230489
-390592
-231107
-436814
-959879
-221963
-157259
-252450
+const TELEGRAM_URL = "https://t.me/dark_client12";
+
+const AIMBOT_ONLY_URL =
+"https://www.mediafire.com/file/rsxh4jpzonfxc1i/TAHA_ALONE_FF_22_ZIP.zip/file";
+
+const FULL_PACK_URL =
+"https://www.mediafire.com/file/m0f0kcpwkfqb76g/FF+2022+hack+file.7z/file";
+
+const ZARCHIVER_URL =
+"https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver";
+
+// ==================
+
+const $ = (id) => document.getElementById(id);
+
+const open = (url) =>
+window.open(url, "_blank", "noopener,noreferrer");
+
+const setMsg = (el, text, ok) => {
+el.textContent = text;
+el.classList.toggle("ok", !!ok);
+};
+
+function showDashboard() {
+$("login").classList.add("hidden");
+$("dashboard").classList.remove("hidden");
+}
+
+function showLogin() {
+$("dashboard").classList.add("hidden");
+$("login").classList.remove("hidden");
+$("keyInput").value = "";
+setMsg($("loginMsg"), "");
+}
+
+if (sessionStorage.getItem("taha-alone-session") === "1") {
+showDashboard();
+}
+
+// LOGIN
+
+$("loginForm").addEventListener("submit", (e) => {
+e.preventDefault();
+
+const input = $("keyInput");
+const msg = $("loginMsg");
+const key = input.value.trim();
+
+if (!key) {
+setMsg(msg, "PLEASE ENTER YOUR KEY!");
+shake(input);
+return;
+}
+
+if (!ACCESS_KEYS.has(key)) {
+setMsg(msg, "INVALID ACCESS KEY!");
+shake(input);
+return;
+}
+
+setMsg(msg, "ACCESS GRANTED!", true);
+
+sessionStorage.setItem("taha-alone-session", "1");
+
+setTimeout(showDashboard, 700);
+});
+
+function shake(el) {
+el.classList.remove("shake");
+void el.offsetWidth;
+el.classList.add("shake");
+}
+
+$("logoutBtn").addEventListener("click", () => {
+sessionStorage.removeItem("taha-alone-session");
+showLogin();
+});
+
+// FEATURES
+
+const selected = new Set();
+
+document.querySelectorAll(".feature").forEach((btn) => {
+btn.addEventListener("click", () => {
+const id = btn.dataset.id;
+
+selected.has(id)
+? selected.delete(id)
+: selected.add(id);
+
+btn.setAttribute("aria-checked", selected.has(id));
+
+$("count").textContent = selected.size + "/3 SELECTED";
+
+setMsg($("featureMsg"), "");
+});
+});
+
+$("downloadXBtn").addEventListener("click", () => {
+const msg = $("featureMsg");
+
+if (selected.size === 0) {
+return setMsg(msg, "PLEASE SELECT A FEATURE FIRST!");
+}
+
+if (!selected.has("aimbot")) {
+return setMsg(msg, "AIMBOT MUST BE SELECTED TO DOWNLOAD!");
+}
+
+setMsg(msg, "");
+
+open(selected.size === 1 ? AIMBOT_ONLY_URL : FULL_PACK_URL);
+});
+
+// NAVIGATION
+
+function goFeatures() {
+$("settingsView").classList.add("hidden");
+$("featuresView").classList.remove("hidden");
+
+$("navFeatures").classList.add("active");
+$("navSettings").classList.remove("active");
+
+requestAnimationFrame(() => {
+$("features").scrollIntoView({behavior:"smooth"});
+});
+}
+
+$("downloadFileBtn").addEventListener("click", goFeatures);
+$("navFeatures").addEventListener("click", goFeatures);
+
+$("navSettings").addEventListener("click", () => {
+$("featuresView").classList.add("hidden");
+$("settingsView").classList.remove("hidden");
+
+$("navSettings").classList.add("active");
+$("navFeatures").classList.remove("active");
+
+window.scrollTo({top:0,behavior:"smooth"});
+});
+
+$("navTelegram").addEventListener("click", () => {
+open(TELEGRAM_URL);
+});
+
+// ZARCHIVER
+
+$("zarchiverBtn").addEventListener("click", () => {
+open(ZARCHIVER_URL);
+});
+</script>
+
+</body>
+</html>
+0
 455935
 120850
 235598
