@@ -1,4 +1,4 @@
-
+no
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -288,6 +288,423 @@ TAHA_ALONE
 366553
 234592
 644662
+507844
+830964
+156252
+722706
+422315
+792958
+177892
+983598
+577185
+338189
+782674
+655862
+694747
+816468
+459864
+910225
+351360
+581387
+187697
+750984
+110802
+339450
+885490
+301124
+288887
+723435
+500498
+279948
+662181
+692480
+961260
+922241
+255360
+526356
+355439
+798797
+821094
+619206
+849167
+970698
+594123
+808401
+483994
+352746
+541577
+504991
+472921
+604073
+700984
+375886
+760910
+572286
+698783
+617104
+700935
+615823
+228201
+914795
+513132
+609842
+382844
+864835
+807081
+223901
+842905
+702503
+255802
+182314
+122577
+329770
+989916
+460154
+858867
+164755
+909520
+735328
+113755
+428236
+987222
+340175
+380917
+905143
+557386
+596543
+291942
+434762
+642014
+322584
+671630
+220102
+388145
+562783
+376857
+946205
+947695
+462950
+250742
+500788
+722330
+108227
+239164
+954612
+774521
+160530
+451581
+753327
+911415
+690641
+301603
+665029
+618712
+118564
+573270
+375168
+509783
+203074
+609550
+442911
+609065
+561162
+201678
+901870
+942957
+548540
+743694
+816456
+455129
+194816
+661310
+306558
+340197
+482128
+459679
+309659
+764888
+760664
+409675
+742171
+834306
+902778
+640511
+640299
+100766
+544590
+785151
+339331
+118518
+424079
+446242
+272788
+465652
+989462
+695126
+239654
+758121
+259395
+284756
+198860
+707911
+318979
+654424
+505488
+615697
+319204
+820930
+245176
+944109
+669781
+317209
+337903
+979860
+103779
+944988
+339348
+507388
+901837
+452732
+562110
+267916
+140899
+136866
+306640
+436051
+771788
+724927
+`.trim().split(/\s+/));
+
+const TELEGRAM_URL = "https://t.me/dark_client12";
+
+const AIMBOT_ONLY_URL =
+"https://www.mediafire.com/file/rsxh4jpzonfxc1i/TAHA_ALONE_FF_22_ZIP.zip/file";
+
+const FULL_PACK_URL =
+"https://www.mediafire.com/file/m0f0kcpwkfqb76g/FF+2022+hack+file.7z/file";
+
+const ZARCHIVER_URL =
+"https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver";
+
+// ==================
+
+const $ = (id) => document.getElementById(id);
+
+const open = (url) =>
+window.open(url, "_blank", "noopener,noreferrer");
+
+const setMsg = (el, text, ok) => {
+el.textContent = text;
+el.classList.toggle("ok", !!ok);
+};
+
+function showDashboard() {
+$("login").classList.add("hidden");
+$("dashboard").classList.remove("hidden");
+}
+
+function showLogin() {
+$("dashboard").classList.add("hidden");
+$("login").classList.remove("hidden");
+$("keyInput").value = "";
+setMsg($("loginMsg"), "");
+}
+
+if (sessionStorage.getItem("taha-alone-session") === "1") {
+showDashboard();
+}
+
+// LOGIN
+
+$("loginForm").addEventListener("submit", (e) => {
+e.preventDefault();
+
+const input = $("keyInput");
+const msg = $("loginMsg");
+const key = input.value.trim();
+
+if (!key) {
+setMsg(msg, "PLEASE ENTER YOUR KEY!");
+shake(input);
+return;
+}
+
+if (!ACCESS_KEYS.has(key)) {
+setMsg(msg, "INVALID ACCESS KEY!");
+shake(input);
+return;
+}
+
+setMsg(msg, "ACCESS GRANTED!", true);
+
+sessionStorage.setItem("taha-alone-session", "1");
+
+setTimeout(showDashboard, 700);
+});
+
+function shake(el) {
+el.classList.remove("shake");
+void el.offsetWidth;
+el.classList.add("shake");
+}
+
+$("logoutBtn").addEventListener("click", () => {
+sessionStorage.removeItem("taha-alone-session");
+showLogin();
+});
+
+// FEATURES
+
+const selected = new Set();
+
+document.querySelectorAll(".feature").forEach((btn) => {
+btn.addEventListener("click", () => {
+const id = btn.dataset.id;
+
+selected.has(id)
+? selected.delete(id)
+: selected.add(id);
+
+btn.setAttribute("aria-checked", selected.has(id));
+
+$("count").textContent = selected.size + "/3 SELECTED";
+
+setMsg($("featureMsg"), "");
+});
+});
+
+$("downloadXBtn").addEventListener("click", () => {
+const msg = $("featureMsg");
+
+if (selected.size === 0) {
+return setMsg(msg, "PLEASE SELECT A FEATURE FIRST!");
+}
+
+if (!selected.has("aimbot")) {
+return setMsg(msg, "AIMBOT MUST BE SELECTED TO DOWNLOAD!");
+}
+
+setMsg(msg, "");
+
+open(selected.size === 1 ? AIMBOT_ONLY_URL : FULL_PACK_URL);
+});
+
+// NAVIGATION
+
+function goFeatures() {
+$("settingsView").classList.add("hidden");
+$("featuresView").classList.remove("hidden");
+
+$("navFeatures").classList.add("active");
+$("navSettings").classList.remove("active");
+
+requestAnimationFrame(() => {
+$("features").scrollIntoView({behavior:"smooth"});
+});
+}
+
+$("downloadFileBtn").addEventListener("click", goFeatures);
+$("navFeatures").addEventListener("click", goFeatures);
+
+$("navSettings").addEventListener("click", () => {
+$("featuresView").classList.add("hidden");
+$("settingsView").classList.remove("hidden");
+
+$("navSettings").classList.add("active");
+$("navFeatures").classList.remove("active");
+
+window.scrollTo({top:0,behavior:"smooth"});
+});
+
+$("navTelegram").addEventListener("click", () => {
+open(TELEGRAM_URL);
+});
+
+// ZARCHIVER
+
+$("zarchiverBtn").addEventListener("click", () => {
+open(ZARCHIVER_URL);
+});
+</script>
+
+</body>
+</html>
+(--ok)">ACTIVE</b></div>
+<div><span class="label" style="font-size:.65rem">LICENSE</span><b>PREMIUM</b></div>
+</div>
+
+<div class="card stack" style="margin-top:1.25rem">
+<div style="text-align:center">
+<p class="h2">ZARCHIVER</p>
+<p class="label" style="margin-top:.6rem">ARCHIVE MANAGER FOR ANDROID</p>
+</div>
+
+<button id="zarchiverBtn" class="btn">⬇ DOWNLOAD ZARCHIVER</button>
+<p class="label" style="text-align:center;font-size:.6rem">AVAILABLE ON GOOGLE PLAY</p>
+</div>
+
+<div class="settings-note">
+TAHA ALONE PREMIUM PANEL<br>
+THANK YOU FOR USING OUR APPLICATION
+</div>
+
+</section>
+</div>
+
+<footer>
+<p>TAHA ALONE © 2026</p>
+<p class="label">ALL RIGHTS RESERVED.</p>
+</footer>
+
+<nav>
+<div class="grid">
+<button id="navFeatures" class="active">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+FEATURES
+</button>
+
+<button id="navSettings">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="12" cy="12" r="3"/>
+<path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>
+</svg>
+SETTINGS
+</button>
+
+<button id="navTelegram">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="m22 2-7 20-4-9-9-4 20-7z"/>
+<path d="M22 2 11 13"/>
+</svg>
+TELEGRAM
+</button>
+</div>
+</nav>
+</div>
+
+<script>
+// ===== CONFIG =====
+
+const ACCESS_KEYS = new Set(`
+TAHA_ALONE
+646746
+798523
+812766
+185624
+249271
+384599
+336562
+453973
+557741
+595668
+102047
+459051
+366553
+234592
+644662
+SADIX
+TAHA
+ZIXO
 507844
 830964
 156252
