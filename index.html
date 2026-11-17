@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#080808">
-<title>TAHA ALONE FF 22 — Premium Gaming Panel</title>
+<title>TAHA ALONE — Premium Gaming Panel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
 <style>
 :root{
- --bg:#080808;--red:#ff1744;--deep:#8b001b;--fg:#f4f1f1;--muted:#858080;
- --card:#111112;--border:#292326;--ok:#43d98b;
- --grad:linear-gradient(180deg,#ff244b,#ed002f);
- --glow:0 0 0 1px rgba(255,23,68,.55),0 12px 34px -12px rgba(255,0,51,.55);
+--bg:#080808;--red:#ff1744;--fg:#f4f1f1;--muted:#858080;
+--card:#111112;--border:#292326;--ok:#43d98b;
+--grad:linear-gradient(180deg,#ff244b,#ed002f);
+--glow:0 0 0 1px rgba(255,23,68,.55),0 12px 34px -12px rgba(255,0,51,.55);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{background:var(--bg);color:var(--fg);font-family:"Rajdhani",sans-serif;min-height:100dvh}
@@ -25,16 +25,23 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .center{justify-content:center;padding-bottom:2.5rem;max-width:25rem}
 .title{font-family:"Russo One",sans-serif;letter-spacing:.015em;line-height:1.05;font-size:clamp(2.5rem,11vw,3.65rem);color:#f5f2f2;text-shadow:0 0 28px rgba(255,0,45,.16);text-align:left}
 .title .accent{color:var(--red)}
-.label{font-family:"Share Tech Mono",monospace;font-weight:400;letter-spacing:.19em;text-transform:uppercase;font-size:.78rem;color:var(--muted)}
+.label{font-family:"Share Tech Mono",monospace;letter-spacing:.19em;text-transform:uppercase;font-size:.78rem;color:var(--muted)}
 .sub{text-align:left;margin-top:.8rem}
 .card{background:linear-gradient(160deg,rgba(26,20,21,.96),rgba(12,11,12,.96));border:1px solid #302326;border-radius:2px;padding:1.2rem;box-shadow:0 12px 32px rgba(0,0,0,.25)}
 .btn{display:flex;align-items:center;justify-content:center;gap:.65rem;width:100%;min-height:3.55rem;padding:.7rem 1rem;border-radius:2px;font-family:"Share Tech Mono",monospace;font-weight:bold;letter-spacing:.045em;font-size:1.05rem;color:#080808;background:var(--grad);box-shadow:var(--glow);border:1px solid #ff526e;transition:transform .15s,filter .2s}
-.btn:hover{filter:brightness(1.1)}.btn:active{transform:scale(.98)}
+.btn:active{transform:scale(.98)}
 .btn.big{min-height:4.1rem;font-size:1.12rem;animation:pulse 2.6s ease-in-out infinite}
 .ghost{display:flex;align-items:center;justify-content:center;gap:.4rem;min-height:2.4rem;padding:0 .85rem;border-radius:2px;font-family:"Share Tech Mono",monospace;font-weight:600;letter-spacing:.1em;font-size:.72rem;border:1px solid rgba(255,23,68,.5);background:rgba(255,23,68,.08);color:#ff617d}
 .ghost.full{width:100%;height:2.75rem}
-input{width:100%;height:3.5rem;padding:0 1rem;border-radius:2px;border:1px solid #393033;background:rgba(5,5,5,.8);color:var(--fg);font-family:"Share Tech Mono",monospace;letter-spacing:.07em;font-size:.9rem}
-input::placeholder{color:#777;letter-spacing:.1em}input:focus{outline:none;border-color:var(--red);box-shadow:0 0 18px rgba(255,0,51,.16)}
+input{width:100%;height:3.5rem;padding:0 1rem;border-radius:2px;border:1px solid #393033;background:rgba(5,5,5,.8);color:var(--fg);font-family:"Share Tech Mono",monospace;letter-spacing:.04em;font-size:.85rem}
+input::placeholder{color:#777;letter-spacing:.06em}
+input:focus{outline:none;border-color:var(--red);box-shadow:0 0 18px rgba(255,0,51,.16)}
+.key-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.55rem;align-items:center}
+.key-row #keyInput{min-width:0;font-size:.72rem;padding:0 .65rem}
+#pasteBtn{height:3.5rem;min-width:5rem;padding:0 .7rem}
+.key-used{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem;align-items:center;margin:1rem 0}
+.key-used input{min-width:0;font-size:.75rem}
+.key-used .ghost{height:3.5rem;min-width:5rem}
 .stack>*+*{margin-top:1rem}
 .msg{min-height:1.25rem;text-align:center;font-family:"Share Tech Mono",monospace;font-weight:600;letter-spacing:.08em;font-size:.75rem;color:var(--red)}
 .msg.ok{color:var(--ok)}
@@ -57,7 +64,9 @@ header{display:flex;align-items:center;justify-content:space-between;padding:.25
 .feature[aria-checked="true"]{border-color:var(--red);background:rgba(255,0,51,.09);box-shadow:0 0 16px rgba(255,0,51,.12)}
 .feature[aria-checked="true"] .track{background:var(--grad);border-color:var(--red)}
 .feature[aria-checked="true"] .track:after{transform:translate(1.35rem,-50%);background:#fff}
-.info{padding:0}.info div{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.1rem;gap:1rem}.info div+div{border-top:1px solid var(--border)}
+.info{padding:0}
+.info div{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.1rem;gap:1rem}
+.info div+div{border-top:1px solid var(--border)}
 .info b{font-family:"Share Tech Mono",monospace;letter-spacing:.04em;font-weight:400;font-size:.85rem;text-align:right}
 .settings-note{margin-top:1rem;padding:1rem;border:1px solid var(--border);border-radius:2px;background:rgba(8,8,8,.55);color:var(--muted);font-family:"Share Tech Mono",monospace;font-size:.75rem;line-height:1.7;text-align:center}
 footer{margin-top:auto;padding-top:3rem;text-align:center}
@@ -66,161 +75,256 @@ footer p:last-child{margin-top:.25rem;font-size:.65rem;opacity:.7}
 nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(7,7,7,.92);backdrop-filter:blur(14px);border-top:1px solid #352326;padding-bottom:env(safe-area-inset-bottom)}
 nav .grid{max-width:36rem;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);height:4rem}
 nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;font-family:"Share Tech Mono",monospace;font-size:.65rem;font-weight:600;letter-spacing:.1em;color:var(--muted);transition:color .2s}
-nav button svg{width:20px;height:20px}nav button.active{color:var(--red)}
-.shake{animation:shake .3s ease}.rise{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+nav button svg{width:20px;height:20px}
+nav button.active{color:var(--red)}
+.shake{animation:shake .3s ease}
+.rise{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes pulse{0%,100%{box-shadow:var(--glow)}50%{box-shadow:var(--glow),0 0 42px -5px rgba(255,0,51,.55)}}
 @keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 </style>
 </head>
 <body>
+
 <main id="login" class="wrap center rise">
- <div class="logo">TA</div>
- <h1 class="title">TAHA<span class="accent"> ALONE</span></h1>
- <p class="label sub">// WELCOME TO TAHA ALONE PANEL FF 22_</p>
- <form id="loginForm" class="card stack" style="margin-top:2rem" novalidate>
-  <input id="keyInput" placeholder="ENTER YOUR ACCESS KEY" autocomplete="off" autocapitalize="characters" spellcheck="false">
-  <button type="submit" class="btn">LOGIN →</button>
-  <p id="loginMsg" class="msg" role="status" aria-live="polite"></p>
- </form>
- <footer><p>TAHA ALONE © 2026</p><p class="label">ALL RIGHTS RESERVED.</p></footer>
+<div class="logo">TA</div>
+<h1 class="title">TAHA<span class="accent"> ALONE</span></h1>
+<p class="label sub">// WELCOME TO TAHA ALONE PANEL_</p>
+<form id="loginForm" class="card stack" style="margin-top:2rem" novalidate>
+<div class="key-row">
+<input id="keyInput" placeholder="ENTER YOUR ACCESS KEY" autocomplete="off" autocapitalize="characters" spellcheck="false">
+<button type="button" id="pasteBtn" class="ghost">PASTE</button>
+</div>
+<button type="submit" class="btn">LOGIN →</button>
+<p id="loginMsg" class="msg" role="status" aria-live="polite"></p>
+</form>
+<footer><p>TAHA ALONE © 2026</p><p class="label">ALL RIGHTS RESERVED.</p></footer>
 </main>
 
 <div id="dashboard" class="wrap hidden">
- <header>
-  <div class="brand"><i>TA</i><span>TAHA ALONE FF 22<br><span class="label" style="color:var(--red);font-size:.65rem">OFFICIAL PANEL</span></span></div>
-  <button id="logoutBtn" class="ghost">LOGOUT</button>
- </header>
+<header>
+<div class="brand"><i>TA</i><span>TAHA ALONE<br><span class="label" style="color:var(--red);font-size:.65rem">OFFICIAL PANEL</span></span></div>
+<button id="logoutBtn" class="ghost">LOGOUT</button>
+</header>
 
- <div id="featuresView">
-  <section class="hero rise">
-   <span class="label pill">● LATEST: V1.0</span>
-   <h1 class="title">TAHA<span class="accent"> ALONE</span></h1>
-   <p class="label" style="margin-top:.8rem">// PREMIUM GAMING PANEL_</p>
-   <button id="downloadFileBtn" class="btn big">↓ &nbsp; DOWNLOAD FILE</button>
-  </section>
-  <section id="features" class="section">
-   <div class="card">
-    <div class="row-head"><h2 class="h2">FEATURES</h2><span id="count" class="label" style="font-size:.65rem">0/3 SELECTED</span></div>
-    <button class="feature" role="switch" aria-checked="false" data-id="aimbot"><span class="name">AIMBOT</span><span class="track"></span></button>
-    <button class="feature" role="switch" aria-checked="false" data-id="animation"><span class="name">ANIMATION RUN</span><span class="track"></span></button>
-    <button class="feature" role="switch" aria-checked="false" data-id="behind"><span class="name">HITTING FROM BEHIND</span><span class="track"></span></button>
-    <button id="downloadXBtn" class="btn" style="margin-top:1.25rem">↓ &nbsp; DOWNLOAD X</button>
-    <p id="featureMsg" class="msg" style="margin-top:.75rem" role="status" aria-live="polite"></p>
-   </div>
-  </section>
- </div>
+<div id="featuresView">
+<section class="hero rise">
+<span class="label pill">● LATEST: V1.0</span>
+<h1 class="title">TAHA<span class="accent"> ALONE</span></h1>
+<p class="label" style="margin-top:.8rem">// PREMIUM GAMING PANEL_</p>
+<button id="downloadFileBtn" class="btn big">↓ &nbsp; DOWNLOAD FILE</button>
+</section>
 
- <div id="settingsView" class="hidden">
-  <section class="section">
-   <h1 class="title" style="font-size:2.25rem">SETTINGS<span class="accent">_</span></h1>
-   <p class="label" style="margin-top:.75rem">// PANEL INFORMATION</p>
-   <div class="card info" style="margin-top:1.5rem">
-    <div><span class="label" style="font-size:.65rem">APPLICATION NAME</span><b>TAHA ALONE</b></div>
-    <div><span class="label" style="font-size:.65rem">VERSION</span><b>1.0</b></div>
-    <div><span class="label" style="font-size:.65rem">DEVELOPER</span><b>TAHA</b></div>
-    <div><span class="label" style="font-size:.65rem">PLATFORM</span><b>ANDROID</b></div>
-    <div><span class="label" style="font-size:.65rem">STATUS</span><b style="color:var(--ok)">ACTIVE</b></div>
-    <div><span class="label" style="font-size:.65rem">LICENSE</span><b>PREMIUM</b></div>
-   </div>
-   <div class="card stack" style="margin-top:1.25rem">
-    <div style="text-align:center"><p class="h2">ZARCHIVER</p><p class="label" style="margin-top:.6rem">ARCHIVE MANAGER FOR ANDROID</p></div>
-    <button id="zarchiverBtn" class="btn">↓ DOWNLOAD ZARCHIVER</button>
-    <p class="label" style="text-align:center;font-size:.6rem">AVAILABLE ON GOOGLE PLAY</p>
-   </div>
-   <div class="settings-note">TAHA ALONE PREMIUM PANEL<br>THANK YOU FOR USING OUR APPLICATION</div>
-  </section>
- </div>
+<section id="features" class="section">
+<div class="card">
+<div class="row-head">
+<h2 class="h2">FEATURES</h2>
+<span id="count" class="label" style="font-size:.65rem">0/3 SELECTED</span>
+</div>
 
- <footer><p>TAHA ALONE © 2026</p><p class="label">ALL RIGHTS RESERVED.</p></footer>
- <nav><div class="grid">
-  <button id="navFeatures" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>FEATURES</button>
-  <button id="navSettings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>SETTINGS</button>
-  <button id="navTelegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>TELEGRAM</button>
- </div></nav>
+<div class="label" style="font-size:.68rem">KEY USED</div>
+<div class="key-used">
+<input id="usedKey" type="password" readonly value="">
+<button type="button" id="toggleKeyBtn" class="ghost">SHOW</button>
+</div>
+
+<button class="feature" role="switch" aria-checked="false" data-id="aimbot"><span class="name">AIMBOT</span><span class="track"></span></button>
+<button class="feature" role="switch" aria-checked="false" data-id="animation"><span class="name">ANIMATION RUN</span><span class="track"></span></button>
+<button class="feature" role="switch" aria-checked="false" data-id="behind"><span class="name">HITTING FROM BEHIND</span><span class="track"></span></button>
+
+<button id="downloadXBtn" class="btn" style="margin-top:1.25rem">↓ &nbsp; DOWNLOAD X</button>
+<p id="featureMsg" class="msg" style="margin-top:.75rem" role="status" aria-live="polite"></p>
+</div>
+</section>
+</div>
+
+<div id="settingsView" class="hidden">
+<section class="section">
+<h1 class="title" style="font-size:2.25rem">SETTINGS<span class="accent">_</span></h1>
+<p class="label" style="margin-top:.75rem">// PANEL INFORMATION</p>
+<div class="card info" style="margin-top:1.5rem">
+<div><span class="label" style="font-size:.65rem">APPLICATION NAME</span><b>TAHA ALONE</b></div>
+<div><span class="label" style="font-size:.65rem">VERSION</span><b>1.0</b></div>
+<div><span class="label" style="font-size:.65rem">DEVELOPER</span><b>TAHA</b></div>
+<div><span class="label" style="font-size:.65rem">PLATFORM</span><b>ANDROID</b></div>
+<div><span class="label" style="font-size:.65rem">STATUS</span><b style="color:var(--ok)">ACTIVE</b></div>
+<div><span class="label" style="font-size:.65rem">LICENSE</span><b>PREMIUM</b></div>
+</div>
+<div class="card stack" style="margin-top:1.25rem">
+<div style="text-align:center"><p class="h2">ZARCHIVER</p><p class="label" style="margin-top:.6rem">ARCHIVE MANAGER FOR ANDROID</p></div>
+<button id="zarchiverBtn" class="btn">↓ DOWNLOAD ZARCHIVER</button>
+<p class="label" style="text-align:center;font-size:.6rem">AVAILABLE ON GOOGLE PLAY</p>
+</div>
+<div class="settings-note">TAHA ALONE PREMIUM PANEL<br>THANK YOU FOR USING OUR APPLICATION</div>
+</section>
+</div>
+
+<footer><p>TAHA ALONE © 2026</p><p class="label">ALL RIGHTS RESERVED.</p></footer>
+<nav><div class="grid">
+<button id="navFeatures" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>FEATURES</button>
+<button id="navSettings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>SETTINGS</button>
+<button id="navTelegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>TELEGRAM</button>
+</div></nav>
 </div>
 
 <script>
-const ACCESS_KEYS = new Set(`
-OWNER_TAHA
-646746 798523 812766 185624 249271 384599 336562 453973 557741 595668
-102047 459051 366553 234592 644662 507844 830964 156252 722706 422315
-792958 177892 983598 577185 338189 782674 655862 694747 816468 459864
-910225 351360 581387 187697 750984 110802 339450 885490 301124 288887
-723435 500498 279948 662181 692480 961260 922241 255360 526356 355439
-798797 821094 619206 849167 970698 594123 808401 483994 352746 541577
-504991 472921 604073 700984 375886 760910 572286 698783 617104 700935
-615823 228201 914795 513132 609842 382844 864835 807081 223901 842905
-702503 255802 182314 122577 329770 989916 460154 858867 164755 909520
-735328 113755 428236 987222 340175 380917 905143 557386 596543 291942
-434762 642014 322584 671630 220102 388145 562783 376857 946205 947695
-462950 250742 500788 722330 108227 239164 954612 774521 160530 451581
-753327 911415 690641 301603 665029 618712 118564 573270 375168 509783
-203074 609550 442911 609065 561162 201678 901870 942957 548540 743694
-816456 455129 194816 661310 306558 340197 482128 459679 309659 764888
-760664 409675 742171 834306 902778 640511 640299 100766 544590 785151
-339331 118518 424079 446242 272788 465652 989462 695126 239654 758121
-259395 284756 198860 707911 318979 654424 505488 615697 319204 820930
-245176 944109 669781 317209 337903 979860 103779 944988 339348 507388
-901837 452732 562110 267916 140899 136866 306640 436051 771788 724927
-583921
-746205
-192837
-864219
-305718
-927461
-451083
-638592
-210746
-795314
-326859
-581472
-943027
-167395
-804631
-259748
-672183
-418926
-735204
-906512
-143869
-529317
-861450
-294681
-657923
-`.trim().split(/\s+/));
+const codes = `
+F4K9 X8P2 M7Q5 Z3N6 B9R4 K2W8 H5T1 P6Y3 D8F7 V4J2
+Q9L5 C3X8 N7B4 R2M6 W5K9 J8P3 G4Z7 L6D2 Y9H5 T3Q8
+A7N4 F2V9 X5C3 M8R6 Z1K7 B4P9 K7Y2 H3W8 P9D5 D2J6
+V8Q4 Q5F1 C9M3 N2X7 R6B8 W1T5 J4L9 G8P2 L3Z6 Y5D1
+T9K4 A2H7 F6Q3 X1N8 M4V5 Z7C2 B3R9 K8J4 H2P6 P5W1
+D9Y3 V2L7 Q6Z4 C1K8 N5F2 R9X6 W3B1 J7M5 G2T9 L8Q3
+Y4P7 T1D6 A9V2 F3C5 X7R1 M2K8 Z5J3 B8W6 K1Y9 H6L4
+P3Q7 D5N2 V9F8 Q2M5 C7X1 N4B9 R1T6 W8P3 J2Z7 G5K4
+L9H1 Y3V8 T6C2 A4R7 F8J3 X2W5 M9D1 Z4Q6 B1N8 K5F3
+H9X2 P4B7 D1T8 V6M3 Q8Y5 C2L9 N6J4 R3P8 W9Z2 J5H7
+G1V4 L7C3 Y2R9 T8K5 A5Q1 F9B6 X3M7 M6P2 Z9W4 B2D8
+K4X1 H7N5 P1R9 D6Q3 V3J8 Q7T2 C5F9 N1Y6 R8L4 W2K7
+J9C5 G3P1 L5V8 Y7B2 T4X9 A8M3 F1D7 X6Q4 M3H9 Z8T1
+B5J6 K9P2 H4W7 P8L3 D3Y5 V7N1 Q4R8 C6B2 N9K5 R4F1
+W7M6 J1Q9 G6X3 L2P7 Y8D4 T5V1 A3Z6 F7K2 X4P9 M1W5
+Z6B3 B7Q8 K3N1 H8R4 P2F6 D7X9 V1C5 Q3J7 C8M4 N3T9
+R5Y2 W4L8 J6D1 G9B5 L1Q4 Y6P3 T2N8 A6F9 F5X2 X9K4
+M5R1 Z2V7 B6C3 K6T8 H1M9 P7D4 D4W2 V5Q8 Q1B6 C4N7
+N8P2 R7J5 W6F3 J3X9 G7L1 L4Y6 Y1T8 T7M3 A1K5 F4R8
+X8D2 M7J6 Z3P1 B9V5 K2C7 H5Q4 P6N8 D8M1 V4X9 Q9W3
+C3R6 N7L2 R2F8 W5D4 J8B1 G4T7 L6P9 Y9C2 T3H5
+`.trim().split(/\s+/);
+
+const ACCESS_KEYS = new Set([
+"OWNER",
+...codes.map(code => `TAHA - ALONE - ${code}`)
+]);
 
 const TELEGRAM_URL="https://t.me/dark_client12";
 const AIMBOT_ONLY_URL="https://www.mediafire.com/file/rsxh4jpzonfxc1i/TAHA_ALONE_FF_22_ZIP.zip/file";
 const FULL_PACK_URL="https://www.mediafire.com/file/m0f0kcpwkfqb76g/FF+2022+hack+file.7z/file";
 const ZARCHIVER_URL="https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver";
+
 const $=id=>document.getElementById(id);
 const open=url=>window.open(url,"_blank","noopener,noreferrer");
 const setMsg=(el,text,ok)=>{el.textContent=text;el.classList.toggle("ok",!!ok)};
-function showDashboard(){$("login").classList.add("hidden");$("dashboard").classList.remove("hidden")}
-function showLogin(){$("dashboard").classList.add("hidden");$("login").classList.remove("hidden");$("keyInput").value="";setMsg($("loginMsg"),"")}
-if(sessionStorage.getItem("taha-alone-session")==="1")showDashboard();
+
+let currentKey="";
+let keyVisible=false;
+
+function showDashboard(){
+$("login").classList.add("hidden");
+$("dashboard").classList.remove("hidden");
+$("usedKey").value=currentKey;
+}
+
+function showLogin(){
+$("dashboard").classList.add("hidden");
+$("login").classList.remove("hidden");
+$("keyInput").value="";
+currentKey="";
+keyVisible=false;
+$("usedKey").value="";
+$("usedKey").type="password";
+$("toggleKeyBtn").textContent="SHOW";
+setMsg($("loginMsg"),"");
+}
+
+if(sessionStorage.getItem("taha-alone-session")==="1"){
+currentKey=sessionStorage.getItem("taha-alone-key")||"";
+showDashboard();
+}
+
 $("loginForm").addEventListener("submit",e=>{
- e.preventDefault();const input=$("keyInput"),msg=$("loginMsg"),key=input.value.trim();
- if(!key){setMsg(msg,"PLEASE ENTER YOUR KEY!");shake(input);return}
- if(!ACCESS_KEYS.has(key)){setMsg(msg,"INVALID ACCESS KEY!");shake(input);return}
- setMsg(msg,"ACCESS GRANTED!",true);sessionStorage.setItem("taha-alone-session","1");setTimeout(showDashboard,700);
+e.preventDefault();
+const input=$("keyInput"),msg=$("loginMsg");
+const key=input.value.trim().toUpperCase();
+
+if(!key){
+setMsg(msg,"PLEASE ENTER YOUR KEY!");
+shake(input);
+return;
+}
+
+if(!ACCESS_KEYS.has(key)){
+setMsg(msg,"INVALID ACCESS KEY!");
+shake(input);
+return;
+}
+
+currentKey=key;
+setMsg(msg,"ACCESS GRANTED!",true);
+sessionStorage.setItem("taha-alone-session","1");
+sessionStorage.setItem("taha-alone-key",key);
+setTimeout(showDashboard,500);
 });
-function shake(el){el.classList.remove("shake");void el.offsetWidth;el.classList.add("shake")}
-$("logoutBtn").addEventListener("click",()=>{sessionStorage.removeItem("taha-alone-session");showLogin()});
+
+$("pasteBtn").addEventListener("click",async()=>{
+try{
+const text=await navigator.clipboard.readText();
+if(!text){
+setMsg($("loginMsg"),"CLIPBOARD IS EMPTY!");
+return;
+}
+$("keyInput").value=text.trim().toUpperCase();
+setMsg($("loginMsg"),"KEY PASTED!",true);
+}catch(error){
+setMsg($("loginMsg"),"CLIPBOARD ACCESS DENIED!");
+}
+});
+
+$("toggleKeyBtn").addEventListener("click",()=>{
+keyVisible=!keyVisible;
+$("usedKey").type=keyVisible?"text":"password";
+$("toggleKeyBtn").textContent=keyVisible?"CLOSE":"SHOW";
+});
+
+function shake(el){
+el.classList.remove("shake");
+void el.offsetWidth;
+el.classList.add("shake");
+}
+
+$("logoutBtn").addEventListener("click",()=>{
+sessionStorage.removeItem("taha-alone-session");
+sessionStorage.removeItem("taha-alone-key");
+showLogin();
+});
+
 const selected=new Set();
+
 document.querySelectorAll(".feature").forEach(btn=>btn.addEventListener("click",()=>{
- const id=btn.dataset.id;selected.has(id)?selected.delete(id):selected.add(id);
- btn.setAttribute("aria-checked",selected.has(id));$("count").textContent=selected.size+"/3 SELECTED";setMsg($("featureMsg"),"");
+const id=btn.dataset.id;
+selected.has(id)?selected.delete(id):selected.add(id);
+btn.setAttribute("aria-checked",selected.has(id));
+$("count").textContent=selected.size+"/3 SELECTED";
+setMsg($("featureMsg"),"");
 }));
+
 $("downloadXBtn").addEventListener("click",()=>{
- const msg=$("featureMsg");if(selected.size===0)return setMsg(msg,"PLEASE SELECT A FEATURE FIRST!");
- if(!selected.has("aimbot"))return setMsg(msg,"AIMBOT MUST BE SELECTED TO DOWNLOAD!");
- setMsg(msg,"");open(selected.size===1?AIMBOT_ONLY_URL:FULL_PACK_URL);
+const msg=$("featureMsg");
+if(selected.size===0)return setMsg(msg,"PLEASE SELECT A FEATURE FIRST!");
+if(!selected.has("aimbot"))return setMsg(msg,"AIMBOT MUST BE SELECTED TO DOWNLOAD!");
+setMsg(msg,"");
+open(selected.size===1?AIMBOT_ONLY_URL:FULL_PACK_URL);
 });
-function goFeatures(){$("settingsView").classList.add("hidden");$("featuresView").classList.remove("hidden");$("navFeatures").classList.add("active");$("navSettings").classList.remove("active");requestAnimationFrame(()=>$("features").scrollIntoView({behavior:"smooth"}))}
-$("downloadFileBtn").addEventListener("click",goFeatures);$("navFeatures").addEventListener("click",goFeatures);
-$("navSettings").addEventListener("click",()=>{$("featuresView").classList.add("hidden");$("settingsView").classList.remove("hidden");$("navSettings").classList.add("active");$("navFeatures").classList.remove("active");window.scrollTo({top:0,behavior:"smooth"})});
+
+function goFeatures(){
+$("settingsView").classList.add("hidden");
+$("featuresView").classList.remove("hidden");
+$("navFeatures").classList.add("active");
+$("navSettings").classList.remove("active");
+requestAnimationFrame(()=>$("features").scrollIntoView({behavior:"smooth"}));
+}
+
+$("downloadFileBtn").addEventListener("click",goFeatures);
+$("navFeatures").addEventListener("click",goFeatures);
+
+$("navSettings").addEventListener("click",()=>{
+$("featuresView").classList.add("hidden");
+$("settingsView").classList.remove("hidden");
+$("navSettings").classList.add("active");
+$("navFeatures").classList.remove("active");
+window.scrollTo({top:0,behavior:"smooth"});
+});
+
 $("navTelegram").addEventListener("click",()=>open(TELEGRAM_URL));
 $("zarchiverBtn").addEventListener("click",()=>open(ZARCHIVER_URL));
 </script>
