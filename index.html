@@ -9,164 +9,71 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
 <style>
-:root{
---bg:#080808;--red:#ff1744;--fg:#f4f1f1;--muted:#858080;
---card:#111112;--border:#292326;--ok:#43d98b;
---grad:linear-gradient(180deg,#ff244b,#ed002f);
---glow:0 0 0 1px rgba(255,23,68,.55),0 12px 34px -12px rgba(255,0,51,.55);
-}
+:root{--bg:#080808;--red:#ff1744;--fg:#f4f1f1;--muted:#858080;--card:#111112;--border:#292326;--ok:#43d98b;--grad:linear-gradient(180deg,#ff244b,#ed002f);--glow:0 0 0 1px rgba(255,23,68,.55),0 12px 34px -12px rgba(255,0,51,.55)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{background:var(--bg);color:var(--fg);font-family:"Rajdhani",sans-serif;min-height:100dvh}
 body{background:radial-gradient(100% 55% at 50% 0%,rgba(130,0,20,.28),transparent 70%),linear-gradient(180deg,#10090b,#050505 65%);overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,23,68,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(255,23,68,.065) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000 0%,transparent 90%)}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-.hidden{display:none!important}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}.hidden{display:none!important}
 .wrap{position:relative;max-width:36rem;margin:0 auto;padding:1.4rem 1.25rem 7rem;min-height:100dvh;display:flex;flex-direction:column}
 .center{justify-content:center;padding-bottom:2.5rem;max-width:25rem}
-.title{font-family:"Russo One",sans-serif;letter-spacing:.015em;line-height:1.05;font-size:clamp(2.5rem,11vw,3.65rem);color:#f5f2f2;text-shadow:0 0 28px rgba(255,0,45,.16);text-align:left}
-.title .accent{color:var(--red)}
-.label{font-family:"Share Tech Mono",monospace;letter-spacing:.19em;text-transform:uppercase;font-size:.78rem;color:var(--muted)}
-.sub{text-align:left;margin-top:.8rem}
+.title{font-family:"Russo One",sans-serif;letter-spacing:.015em;line-height:1.05;font-size:clamp(2.5rem,11vw,3.65rem);color:#f5f2f2;text-shadow:0 0 28px rgba(255,0,45,.16);text-align:left}.title .accent{color:var(--red)}
+.label{font-family:"Share Tech Mono",monospace;letter-spacing:.19em;text-transform:uppercase;font-size:.78rem;color:var(--muted)}.sub{text-align:left;margin-top:.8rem}
 .card{background:linear-gradient(160deg,rgba(26,20,21,.96),rgba(12,11,12,.96));border:1px solid #302326;border-radius:2px;padding:1.2rem;box-shadow:0 12px 32px rgba(0,0,0,.25)}
-.btn{display:flex;align-items:center;justify-content:center;gap:.65rem;width:100%;min-height:3.55rem;padding:.7rem 1rem;border-radius:2px;font-family:"Share Tech Mono",monospace;font-weight:bold;letter-spacing:.045em;font-size:1.05rem;color:#080808;background:var(--grad);box-shadow:var(--glow);border:1px solid #ff526e;transition:transform .15s,filter .2s}
-.btn:active{transform:scale(.98)}
-.btn.big{min-height:4.1rem;font-size:1.12rem;animation:pulse 2.6s ease-in-out infinite}
-.ghost{display:flex;align-items:center;justify-content:center;gap:.4rem;min-height:2.4rem;padding:0 .85rem;border-radius:2px;font-family:"Share Tech Mono",monospace;font-weight:600;letter-spacing:.1em;font-size:.72rem;border:1px solid rgba(255,23,68,.5);background:rgba(255,23,68,.08);color:#ff617d}
-.ghost.full{width:100%;height:2.75rem}
-input{width:100%;height:3.5rem;padding:0 1rem;border-radius:2px;border:1px solid #393033;background:rgba(5,5,5,.8);color:var(--fg);font-family:"Share Tech Mono",monospace;letter-spacing:.04em;font-size:.85rem}
-input::placeholder{color:#777;letter-spacing:.06em}
-input:focus{outline:none;border-color:var(--red);box-shadow:0 0 18px rgba(255,0,51,.16)}
-.key-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.55rem;align-items:center}
-.key-row #keyInput{min-width:0;font-size:.72rem;padding:0 .65rem}
-#pasteBtn{height:3.5rem;min-width:5rem;padding:0 .7rem}
-.key-used{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem;align-items:center;margin:1rem 0}
-.key-used input{min-width:0;font-size:.75rem}
-.key-used .ghost{height:3.5rem;min-width:5rem}
-.stack>*+*{margin-top:1rem}
-.msg{min-height:1.25rem;text-align:center;font-family:"Share Tech Mono",monospace;font-weight:600;letter-spacing:.08em;font-size:.75rem;color:var(--red)}
-.msg.ok{color:var(--ok)}
+.btn{display:flex;align-items:center;justify-content:center;gap:.65rem;width:100%;min-height:3.55rem;padding:.7rem 1rem;border-radius:2px;font-family:"Share Tech Mono",monospace;font-weight:bold;letter-spacing:.045em;font-size:1.05rem;color:#080808;background:var(--grad);box-shadow:var(--glow);border:1px solid #ff526e;transition:transform .15s,filter .2s}.btn:active{transform:scale(.98)}.btn.big{min-height:4.1rem;font-size:1.12rem;animation:pulse 2.6s ease-in-out infinite}
+.ghost{display:flex;align-items:center;justify-content:center;gap:.4rem;min-height:2.4rem;padding:0 .85rem;border-radius:2px;font-family:"Share Tech Mono",monospace;font-weight:600;letter-spacing:.1em;font-size:.72rem;border:1px solid rgba(255,23,68,.5);background:rgba(255,23,68,.08);color:#ff617d}.ghost.full{width:100%;height:2.75rem}
+input{width:100%;height:3.5rem;padding:0 1rem;border-radius:2px;border:1px solid #393033;background:rgba(5,5,5,.8);color:var(--fg);font-family:"Share Tech Mono",monospace;letter-spacing:.04em;font-size:.85rem}input::placeholder{color:#777;letter-spacing:.06em}input:focus{outline:none;border-color:var(--red);box-shadow:0 0 18px rgba(255,0,51,.16)}
+.key-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.55rem;align-items:center}.key-row #keyInput{min-width:0;font-size:.72rem;padding:0 .65rem}#pasteBtn{height:3.5rem;min-width:5rem;padding:0 .7rem}
+.key-used{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem;align-items:center;margin:1rem 0}.key-used input{min-width:0;font-size:.75rem}.key-used .ghost{height:3.5rem;min-width:5rem}
+.stack>*+*{margin-top:1rem}.msg{min-height:1.25rem;text-align:center;font-family:"Share Tech Mono",monospace;font-weight:600;letter-spacing:.08em;font-size:.75rem;color:var(--red)}.msg.ok{color:var(--ok)}
 .logo{width:4.1rem;height:4.1rem;border-radius:50%;margin:0 0 1.2rem;display:grid;place-items:center;background:radial-gradient(circle at 35% 25%,#5d101d,#10090b 65%);border:2px solid #7e1a2b;box-shadow:0 0 0 4px rgba(255,0,51,.06),0 0 24px rgba(255,0,51,.24);font-family:"Russo One";font-size:1.35rem;color:#fff}
-header{display:flex;align-items:center;justify-content:space-between;padding:.25rem 0 1.35rem;border-bottom:1px solid #352326}
-.brand{display:flex;align-items:center;gap:.7rem;font-family:"Russo One";letter-spacing:.12em;font-size:.9rem}
-.brand i{width:2.7rem;height:2.7rem;border-radius:50%;background:radial-gradient(circle at 35% 25%,#6b1725,#10090b 70%);border:1px solid #9b263b;display:grid;place-items:center;font-style:normal;box-shadow:0 0 18px rgba(255,0,51,.2)}
+header{display:flex;align-items:center;justify-content:space-between;padding:.25rem 0 1.35rem;border-bottom:1px solid #352326}.brand{display:flex;align-items:center;gap:.7rem;font-family:"Russo One";letter-spacing:.12em;font-size:.9rem}.brand i{width:2.7rem;height:2.7rem;border-radius:50%;background:radial-gradient(circle at 35% 25%,#6b1725,#10090b 70%);border:1px solid #9b263b;display:grid;place-items:center;font-style:normal;box-shadow:0 0 18px rgba(255,0,51,.2)}
 .pill{display:inline-block;padding:.38rem .75rem;border:1px solid rgba(255,23,68,.45);background:rgba(255,23,68,.08);color:#ff4c6d;font-family:"Share Tech Mono",monospace;font-size:.72rem;letter-spacing:.13em}
-.hero{margin-top:2.5rem;text-align:left}
-.hero .btn{margin-top:2rem}
-.hero .title{margin-top:1.45rem}
-.section{margin-top:2.5rem;scroll-margin-top:1.5rem;animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
-.row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
-.h2{font-family:"Russo One";letter-spacing:.08em;font-size:1.05rem}
-.feature{display:flex;align-items:center;gap:.75rem;width:100%;padding:1rem;border-radius:2px;text-align:left;border:1px solid #33272a;background:rgba(7,7,7,.72);transition:all .2s}
-.feature+.feature{margin-top:.7rem}
-.feature span.name{flex:1;font-family:"Share Tech Mono",monospace;font-weight:600;letter-spacing:.05em;font-size:.88rem}
-.track{position:relative;width:3rem;height:1.55rem;border-radius:2px;background:#211a1c;border:1px solid #49343a;flex-shrink:0;transition:background .25s}
-.track:after{content:"";position:absolute;top:50%;left:.2rem;width:1.05rem;height:1.05rem;border-radius:1px;background:#8b7d80;transform:translateY(-50%);transition:transform .25s,background .25s}
-.feature[aria-checked="true"]{border-color:var(--red);background:rgba(255,0,51,.09);box-shadow:0 0 16px rgba(255,0,51,.12)}
-.feature[aria-checked="true"] .track{background:var(--grad);border-color:var(--red)}
-.feature[aria-checked="true"] .track:after{transform:translate(1.35rem,-50%);background:#fff}
-.info{padding:0}
-.info div{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.1rem;gap:1rem}
-.info div+div{border-top:1px solid var(--border)}
-.info b{font-family:"Share Tech Mono",monospace;letter-spacing:.04em;font-weight:400;font-size:.85rem;text-align:right}
+.hero{margin-top:2.5rem;text-align:left}.hero .btn{margin-top:2rem}.hero .title{margin-top:1.45rem}
+.section{margin-top:2.5rem;scroll-margin-top:1.5rem;animation:rise .5s cubic-bezier(.2,.8,.2,1) both}.row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}.h2{font-family:"Russo One";letter-spacing:.08em;font-size:1.05rem}
+.feature{display:flex;align-items:center;gap:.75rem;width:100%;padding:1rem;border-radius:2px;text-align:left;border:1px solid #33272a;background:rgba(7,7,7,.72);transition:all .2s}.feature+.feature{margin-top:.7rem}.feature span.name{flex:1;font-family:"Share Tech Mono",monospace;font-weight:600;letter-spacing:.05em;font-size:.88rem}
+.track{position:relative;width:3rem;height:1.55rem;border-radius:2px;background:#211a1c;border:1px solid #49343a;flex-shrink:0;transition:background .25s}.track:after{content:"";position:absolute;top:50%;left:.2rem;width:1.05rem;height:1.05rem;border-radius:1px;background:#8b7d80;transform:translateY(-50%);transition:transform .25s,background .25s}
+.feature[aria-checked="true"]{border-color:var(--red);background:rgba(255,0,51,.09);box-shadow:0 0 16px rgba(255,0,51,.12)}.feature[aria-checked="true"] .track{background:var(--grad);border-color:var(--red)}.feature[aria-checked="true"] .track:after{transform:translate(1.35rem,-50%);background:#fff}
+.info{padding:0}.info div{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.1rem;gap:1rem}.info div+div{border-top:1px solid var(--border)}.info b{font-family:"Share Tech Mono",monospace;letter-spacing:.04em;font-weight:400;font-size:.85rem;text-align:right}
 .settings-note{margin-top:1rem;padding:1rem;border:1px solid var(--border);border-radius:2px;background:rgba(8,8,8,.55);color:var(--muted);font-family:"Share Tech Mono",monospace;font-size:.75rem;line-height:1.7;text-align:center}
-footer{margin-top:auto;padding-top:3rem;text-align:center}
-footer p:first-child{font-family:"Share Tech Mono",monospace;letter-spacing:.13em;font-size:.75rem;color:var(--muted)}
-footer p:last-child{margin-top:.25rem;font-size:.65rem;opacity:.7}
-nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(7,7,7,.92);backdrop-filter:blur(14px);border-top:1px solid #352326;padding-bottom:env(safe-area-inset-bottom)}
-nav .grid{max-width:36rem;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);height:4rem}
-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;font-family:"Share Tech Mono",monospace;font-size:.65rem;font-weight:600;letter-spacing:.1em;color:var(--muted);transition:color .2s}
-nav button svg{width:20px;height:20px}
-nav button.active{color:var(--red)}
-.shake{animation:shake .3s ease}
-.rise{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
-@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes pulse{0%,100%{box-shadow:var(--glow)}50%{box-shadow:var(--glow),0 0 42px -5px rgba(255,0,51,.55)}}
-@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+footer{margin-top:auto;padding-top:3rem;text-align:center}footer p:first-child{font-family:"Share Tech Mono",monospace;letter-spacing:.13em;font-size:.75rem;color:var(--muted)}footer p:last-child{margin-top:.25rem;font-size:.65rem;opacity:.7}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(7,7,7,.92);backdrop-filter:blur(14px);border-top:1px solid #352326;padding-bottom:env(safe-area-inset-bottom)}nav .grid{max-width:36rem;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);height:4rem}nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;font-family:"Share Tech Mono",monospace;font-size:.65rem;font-weight:600;letter-spacing:.1em;color:var(--muted);transition:color .2s}nav button svg{width:20px;height:20px}nav button.active{color:var(--red)}
+.shake{animation:shake .3s ease}.rise{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@keyframes pulse{0%,100%{box-shadow:var(--glow)}50%{box-shadow:var(--glow),0 0 42px -5px rgba(255,0,51,.55)}}@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 </style>
 </head>
 <body>
-
 <main id="login" class="wrap center rise">
-<div class="logo">TA</div>
-<h1 class="title">TAHA<span class="accent"> ALONE</span></h1>
+<div class="logo">TA</div><h1 class="title">TAHA<span class="accent"> ALONE</span></h1>
 <p class="label sub">// WELCOME TO TAHA ALONE PANEL_</p>
 <form id="loginForm" class="card stack" style="margin-top:2rem" novalidate>
-<div class="key-row">
-<input id="keyInput" placeholder="ENTER YOUR ACCESS KEY" autocomplete="off" autocapitalize="characters" spellcheck="false">
-<button type="button" id="pasteBtn" class="ghost">PASTE</button>
-</div>
-<button type="submit" class="btn">LOGIN →</button>
-<p id="loginMsg" class="msg" role="status" aria-live="polite"></p>
-</form>
-<footer><p>TAHA ALONE © 2026</p><p class="label">ALL RIGHTS RESERVED.</p></footer>
+<div class="key-row"><input id="keyInput" placeholder="ENTER YOUR ACCESS KEY" autocomplete="off" autocapitalize="characters" spellcheck="false"><button type="button" id="pasteBtn" class="ghost">PASTE</button></div>
+<button type="submit" class="btn">LOGIN →</button><p id="loginMsg" class="msg" role="status" aria-live="polite"></p>
+</form><footer><p>TAHA ALONE © 2026</p><p class="label">ALL RIGHTS RESERVED.</p></footer>
 </main>
-
 <div id="dashboard" class="wrap hidden">
-<header>
-<div class="brand"><i>TA</i><span>TAHA ALONE<br><span class="label" style="color:var(--red);font-size:.65rem">OFFICIAL PANEL</span></span></div>
-<button id="logoutBtn" class="ghost">LOGOUT</button>
-</header>
-
+<header><div class="brand"><i>TA</i><span>TAHA ALONE<br><span class="label" style="color:var(--red);font-size:.65rem">OFFICIAL PANEL</span></span></div><button id="logoutBtn" class="ghost">LOGOUT</button></header>
 <div id="featuresView">
-<section class="hero rise">
-<span class="label pill">● LATEST: V1.0</span>
-<h1 class="title">TAHA<span class="accent"> ALONE</span></h1>
-<p class="label" style="margin-top:.8rem">// PREMIUM GAMING PANEL_</p>
-<button id="downloadFileBtn" class="btn big">↓ &nbsp; DOWNLOAD FILE</button>
-</section>
-
-<section id="features" class="section">
-<div class="card">
-<div class="row-head">
-<h2 class="h2">FEATURES</h2>
-<span id="count" class="label" style="font-size:.65rem">0/3 SELECTED</span>
-</div>
-
-<div class="label" style="font-size:.68rem">KEY USED</div>
-<div class="key-used">
-<input id="usedKey" type="password" readonly value="">
-<button type="button" id="toggleKeyBtn" class="ghost">SHOW</button>
-</div>
-
+<section class="hero rise"><span class="label pill">● LATEST: V1.0</span><h1 class="title">TAHA<span class="accent"> ALONE</span></h1><p class="label" style="margin-top:.8rem">// PREMIUM GAMING PANEL_</p><button id="downloadFileBtn" class="btn big">↓ &nbsp; DOWNLOAD FILE</button></section>
+<section id="features" class="section"><div class="card">
+<div class="row-head"><h2 class="h2">FEATURES</h2><span id="count" class="label" style="font-size:.65rem">0/3 SELECTED</span></div>
+<div class="label" style="font-size:.68rem">KEY USED</div><div class="key-used"><input id="usedKey" type="password" readonly value=""><button type="button" id="toggleKeyBtn" class="ghost">SHOW</button></div>
 <button class="feature" role="switch" aria-checked="false" data-id="aimbot"><span class="name">AIMBOT</span><span class="track"></span></button>
 <button class="feature" role="switch" aria-checked="false" data-id="animation"><span class="name">ANIMATION RUN</span><span class="track"></span></button>
 <button class="feature" role="switch" aria-checked="false" data-id="behind"><span class="name">HITTING FROM BEHIND</span><span class="track"></span></button>
-
-<button id="downloadXBtn" class="btn" style="margin-top:1.25rem">↓ &nbsp; DOWNLOAD X</button>
-<p id="featureMsg" class="msg" style="margin-top:.75rem" role="status" aria-live="polite"></p>
-</div>
-</section>
-</div>
-
-<div id="settingsView" class="hidden">
-<section class="section">
-<h1 class="title" style="font-size:2.25rem">SETTINGS<span class="accent">_</span></h1>
-<p class="label" style="margin-top:.75rem">// PANEL INFORMATION</p>
-<div class="card info" style="margin-top:1.5rem">
-<div><span class="label" style="font-size:.65rem">APPLICATION NAME</span><b>TAHA ALONE</b></div>
-<div><span class="label" style="font-size:.65rem">VERSION</span><b>1.0</b></div>
-<div><span class="label" style="font-size:.65rem">DEVELOPER</span><b>TAHA</b></div>
-<div><span class="label" style="font-size:.65rem">PLATFORM</span><b>ANDROID</b></div>
-<div><span class="label" style="font-size:.65rem">STATUS</span><b style="color:var(--ok)">ACTIVE</b></div>
-<div><span class="label" style="font-size:.65rem">LICENSE</span><b>PREMIUM</b></div>
-</div>
-<div class="card stack" style="margin-top:1.25rem">
-<div style="text-align:center"><p class="h2">ZARCHIVER</p><p class="label" style="margin-top:.6rem">ARCHIVE MANAGER FOR ANDROID</p></div>
-<button id="zarchiverBtn" class="btn">↓ DOWNLOAD ZARCHIVER</button>
-<p class="label" style="text-align:center;font-size:.6rem">AVAILABLE ON GOOGLE PLAY</p>
-</div>
+<button id="downloadXBtn" class="btn" style="margin-top:1.25rem">↓ &nbsp; DOWNLOAD X</button><p id="featureMsg" class="msg" style="margin-top:.75rem" role="status" aria-live="polite"></p>
+</div></section></div>
+<div id="settingsView" class="hidden"><section class="section">
+<h1 class="title" style="font-size:2.25rem">SETTINGS<span class="accent">_</span></h1><p class="label" style="margin-top:.75rem">// PANEL INFORMATION</p>
+<div class="card info" style="margin-top:1.5rem"><div><span class="label" style="font-size:.65rem">APPLICATION NAME</span><b>TAHA ALONE</b></div><div><span class="label" style="font-size:.65rem">VERSION</span><b>1.0</b></div><div><span class="label" style="font-size:.65rem">DEVELOPER</span><b>TAHA</b></div><div><span class="label" style="font-size:.65rem">PLATFORM</span><b>ANDROID</b></div><div><span class="label" style="font-size:.65rem">STATUS</span><b style="color:var(--ok)">ACTIVE</b></div><div><span class="label" style="font-size:.65rem">LICENSE</span><b>PREMIUM</b></div></div>
+<div class="card stack" style="margin-top:1.25rem"><div style="text-align:center"><p class="h2">ZARCHIVER</p><p class="label" style="margin-top:.6rem">ARCHIVE MANAGER FOR ANDROID</p></div><button id="zarchiverBtn" class="btn">↓ DOWNLOAD ZARCHIVER</button><p class="label" style="text-align:center;font-size:.6rem">AVAILABLE ON GOOGLE PLAY</p></div>
 <div class="settings-note">TAHA ALONE PREMIUM PANEL<br>THANK YOU FOR USING OUR APPLICATION</div>
-</section>
-</div>
-
+</section></div>
 <footer><p>TAHA ALONE © 2026</p><p class="label">ALL RIGHTS RESERVED.</p></footer>
 <nav><div class="grid">
 <button id="navFeatures" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>FEATURES</button>
-<button id="navSettings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>SETTINGS</button>
+<button id="navSettings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l.1.1a2 2 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>SETTINGS</button>
 <button id="navTelegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>TELEGRAM</button>
-</div></nav>
-</div>
-
+</div></nav></div>
 <script>
 const codes = `
 F4K9 X8P2 M7Q5 Z3N6 B9R4 K2W8 H5T1 P6Y3 D8F7 V4J2
@@ -192,141 +99,117 @@ X8D2 M7J6 Z3P1 B9V5 K2C7 H5Q4 P6N8 D8M1 V4X9 Q9W3
 C3R6 N7L2 R2F8 W5D4 J8B1 G4T7 L6P9 Y9C2 T3H5
 `.trim().split(/\s+/);
 
+const NEW_KEYS = `
+TAHA-ALONE-02G0 TAHA-ALONE-03BZ TAHA-ALONE-05P6 TAHA-ALONE-08X1
+TAHA-ALONE-0DWJ TAHA-ALONE-0F7K TAHA-ALONE-0G9Q TAHA-ALONE-0H2M
+TAHA-ALONE-0J6A TAHA-ALONE-0K8Z TAHA-ALONE-0M4P TAHA-ALONE-0N7X
+TAHA-ALONE-0Q3B TAHA-ALONE-0R5D TAHA-ALONE-0S9L TAHA-ALONE-0T2V
+TAHA-ALONE-0W6C TAHA-ALONE-0X8F TAHA-ALONE-0Y4N TAHA-ALONE-0Z7H
+TAHA-ALONE-12AB TAHA-ALONE-14CD TAHA-ALONE-16EF TAHA-ALONE-18GH
+TAHA-ALONE-1J2K TAHA-ALONE-1L4M TAHA-ALONE-1N6P TAHA-ALONE-1Q8R
+TAHA-ALONE-1S3T TAHA-ALONE-1V5W TAHA-ALONE-1X7Y TAHA-ALONE-1Z9A
+TAHA-ALONE-20BC TAHA-ALONE-22DE TAHA-ALONE-24FG TAHA-ALONE-26HJ
+TAHA-ALONE-28KL TAHA-ALONE-2M3N TAHA-ALONE-2P5Q TAHA-ALONE-2R7S
+TAHA-ALONE-2T9V TAHA-ALONE-2W4X TAHA-ALONE-2Y6Z TAHA-ALONE-30AD
+TAHA-ALONE-32BF TAHA-ALONE-34CH TAHA-ALONE-36DJ TAHA-ALONE-38FK
+TAHA-ALONE-3G5M TAHA-ALONE-3H7N TAHA-ALONE-3J9P TAHA-ALONE-3K2Q
+TAHA-ALONE-3L4R TAHA-ALONE-3M6S TAHA-ALONE-3N8T TAHA-ALONE-3P5V
+TAHA-ALONE-3Q7W TAHA-ALONE-3R9X TAHA-ALONE-3S2Y TAHA-ALONE-3T4Z
+TAHA-ALONE-40AE TAHA-ALONE-42BG TAHA-ALONE-44CJ TAHA-ALONE-46DK
+TAHA-ALONE-48FM TAHA-ALONE-4G2N TAHA-ALONE-4H5P TAHA-ALONE-4J7Q
+TAHA-ALONE-4K9R TAHA-ALONE-4L3S TAHA-ALONE-4M6T TAHA-ALONE-4N8V
+TAHA-ALONE-4P2W TAHA-ALONE-4Q5X TAHA-ALONE-4R7Y TAHA-ALONE-4S9Z
+TAHA-ALONE-50AF TAHA-ALONE-52BH TAHA-ALONE-54CK TAHA-ALONE-56DM
+TAHA-ALONE-58FN TAHA-ALONE-5G3P TAHA-ALONE-5H6Q TAHA-ALONE-5J8R
+TAHA-ALONE-5K2S TAHA-ALONE-5L4T TAHA-ALONE-5M7V TAHA-ALONE-5N9W
+TAHA-ALONE-5P3X TAHA-ALONE-5Q6Y TAHA-ALONE-5R8Z TAHA-ALONE-60AG
+TAHA-ALONE-62BJ TAHA-ALONE-64CL TAHA-ALONE-66DN TAHA-ALONE-68FP
+TAHA-ALONE-6G4Q TAHA-ALONE-6H7R TAHA-ALONE-6J9S TAHA-ALONE-6K3T
+TAHA-ALONE-6L5V TAHA-ALONE-6M8W TAHA-ALONE-6N2X TAHA-ALONE-6P4Y
+TAHA-ALONE-6Q7Z TAHA-ALONE-70AH TAHA-ALONE-72BK TAHA-ALONE-74CM
+TAHA-ALONE-76DP TAHA-ALONE-78FQ TAHA-ALONE-7G5R TAHA-ALONE-7H8S
+TAHA-ALONE-7J2T TAHA-ALONE-7K4V TAHA-ALONE-7L6W TAHA-ALONE-7M9X
+TAHA-ALONE-7N3Y TAHA-ALONE-7P5Z TAHA-ALONE-80AJ TAHA-ALONE-82BL
+TAHA-ALONE-84CN TAHA-ALONE-86DQ TAHA-ALONE-88FR TAHA-ALONE-8G6S
+TAHA-ALONE-8H9T TAHA-ALONE-8J3V TAHA-ALONE-8K5W TAHA-ALONE-8L7X
+TAHA-ALONE-8M2Y TAHA-ALONE-8N4Z TAHA-ALONE-90AK TAHA-ALONE-92BM
+TAHA-ALONE-94CP TAHA-ALONE-96DR TAHA-ALONE-98FS TAHA-ALONE-9G7T
+TAHA-ALONE-9H2V TAHA-ALONE-9J4W TAHA-ALONE-9K6X TAHA-ALONE-9L8Y
+TAHA-ALONE-9M3Z TAHA-ALONE-A0BC TAHA-ALONE-A2DE TAHA-ALONE-A4FG
+TAHA-ALONE-A6HJ TAHA-ALONE-A8KL TAHA-ALONE-AB3M TAHA-ALONE-AC5N
+TAHA-ALONE-AD7P TAHA-ALONE-AE9Q TAHA-ALONE-AF2R TAHA-ALONE-AG4S
+TAHA-ALONE-AH6T TAHA-ALONE-AJ8V TAHA-ALONE-AK3W TAHA-ALONE-AL5X
+TAHA-ALONE-AM7Y TAHA-ALONE-AN9Z TAHA-ALONE-B0CD TAHA-ALONE-B2EF
+TAHA-ALONE-B4GH TAHA-ALONE-B6JK TAHA-ALONE-B8LM TAHA-ALONE-BC3N
+TAHA-ALONE-BD5P TAHA-ALONE-BE7Q TAHA-ALONE-BF9R TAHA-ALONE-BG2S
+TAHA-ALONE-BH4T TAHA-ALONE-BJ6V TAHA-ALONE-BK8W TAHA-ALONE-BL3X
+TAHA-ALONE-BM5Y TAHA-ALONE-BN7Z TAHA-ALONE-C0DE TAHA-ALONE-C2FG
+TAHA-ALONE-C4HJ TAHA-ALONE-C6KL TAHA-ALONE-C8MN TAHA-ALONE-CD3P
+TAHA-ALONE-CE5Q TAHA-ALONE-CF7R TAHA-ALONE-CG9S TAHA-ALONE-CH2T
+TAHA-ALONE-CJ4V TAHA-ALONE-CK6W TAHA-ALONE-CL8X TAHA-ALONE-CM3Y
+TAHA-ALONE-CN5Z TAHA-ALONE-D0EF TAHA-ALONE-D2GH TAHA-ALONE-D4JK
+TAHA-ALONE-D6LM TAHA-ALONE-D8NP TAHA-ALONE-DE3Q TAHA-ALONE-DF5R
+TAHA-ALONE-DG7S TAHA-ALONE-DH9T TAHA-ALONE-DJ2V TAHA-ALONE-DK4W
+TAHA-ALONE-DL6X TAHA-ALONE-DM8Y TAHA-ALONE-DN3Z TAHA-ALONE-E0FG
+TAHA-ALONE-E2HJ TAHA-ALONE-E4KL TAHA-ALONE-E6MN TAHA-ALONE-E8PQ
+TAHA-ALONE-EF3R TAHA-ALONE-EG5S TAHA-ALONE-EH7T TAHA-ALONE-EJ9V
+TAHA-ALONE-EK2W TAHA-ALONE-EL4X TAHA-ALONE-EM6Y TAHA-ALONE-EN8Z
+TAHA-ALONE-F0GH TAHA-ALONE-F2JK TAHA-ALONE-F4LM TAHA-ALONE-F6NP
+TAHA-ALONE-F8QR TAHA-ALONE-FG3S TAHA-ALONE-FH5T TAHA-ALONE-FJ7V
+TAHA-ALONE-FK9W TAHA-ALONE-FL2X TAHA-ALONE-FM4Y TAHA-ALONE-FN6Z
+TAHA-ALONE-G0HJ TAHA-ALONE-G2KL TAHA-ALONE-G4MN TAHA-ALONE-G6PQ
+TAHA-ALONE-G8RS TAHA-ALONE-GH3T TAHA-ALONE-GJ5V TAHA-ALONE-GK7W
+TAHA-ALONE-GL9X TAHA-ALONE-GM2Y TAHA-ALONE-GN4Z TAHA-ALONE-H0JK
+TAHA-ALONE-H2LM TAHA-ALONE-H4NP TAHA-ALONE-H6QR TAHA-ALONE-H8ST
+TAHA-ALONE-HJ3V TAHA-ALONE-HK5W TAHA-ALONE-HL7X TAHA-ALONE-HM9Y
+TAHA-ALONE-HN2Z TAHA-ALONE-J0KL TAHA-ALONE-J2MN TAHA-ALONE-J4PQ
+TAHA-ALONE-J6RS TAHA-ALONE-J8TV TAHA-ALONE-JK3W TAHA-ALONE-JL5X
+TAHA-ALONE-JM7Y TAHA-ALONE-JN9Z TAHA-ALONE-K0LM TAHA-ALONE-K2NP
+TAHA-ALONE-K4QR TAHA-ALONE-K6ST TAHA-ALONE-K8VW TAHA-ALONE-KL3X
+TAHA-ALONE-KM5Y TAHA-ALONE-KN7Z TAHA-ALONE-L0MN TAHA-ALONE-L2PQ
+TAHA-ALONE-L4RS TAHA-ALONE-L6TV TAHA-ALONE-L8WX TAHA-ALONE-LM3Y
+TAHA-ALONE-LN5Z TAHA-ALONE-M0NP TAHA-ALONE-M2QR TAHA-ALONE-M4ST
+TAHA-ALONE-M6VW TAHA-ALONE-M8XY TAHA-ALONE-MN3Z TAHA-ALONE-N0PQ
+TAHA-ALONE-N2RS TAHA-ALONE-N4TV TAHA-ALONE-N6WX TAHA-ALONE-N8YZ
+TAHA-ALONE-P0QR TAHA-ALONE-P2ST TAHA-ALONE-P4VW TAHA-ALONE-P6XY
+TAHA-ALONE-P8ZA TAHA-ALONE-Q0RS TAHA-ALONE-Q2TV TAHA-ALONE-Q4WX
+TAHA-ALONE-Q6YZ TAHA-ALONE-R0ST TAHA-ALONE-R2VW TAHA-ALONE-R4XY
+TAHA-ALONE-R6ZA TAHA-ALONE-S0TV TAHA-ALONE-S2WX TAHA-ALONE-S4YZ
+TAHA-ALONE-T0VW TAHA-ALONE-T2XY TAHA-ALONE-T4ZA TAHA-ALONE-V0WX
+TAHA-ALONE-V2YZ TAHA-ALONE-W0XY TAHA-ALONE-W2ZA TAHA-ALONE-X0YZ
+TAHA-ALONE-Y2ZA TAHA-ALONE-ZITO TAHA-ALONE-ZSTF TAHA-ALONE-ZTDZ
+TAHA-ALONE-ZUFV TAHA-ALONE-ZY3D
+`.trim().split(/\s+/);
+
 const ACCESS_KEYS = new Set([
-"OWNER",
-...codes.map(code => `TAHA - ALONE - ${code}`)
+  "OWNER",
+  ...codes.map(code => `TAHA - ALONE - ${code}`),
+  ...NEW_KEYS
 ]);
 
 const TELEGRAM_URL="https://t.me/dark_client12";
 const AIMBOT_ONLY_URL="https://www.mediafire.com/file/rsxh4jpzonfxc1i/TAHA_ALONE_FF_22_ZIP.zip/file";
 const FULL_PACK_URL="https://www.mediafire.com/file/m0f0kcpwkfqb76g/FF+2022+hack+file.7z/file";
 const ZARCHIVER_URL="https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver";
-
 const $=id=>document.getElementById(id);
 const open=url=>window.open(url,"_blank","noopener,noreferrer");
 const setMsg=(el,text,ok)=>{el.textContent=text;el.classList.toggle("ok",!!ok)};
-
-let currentKey="";
-let keyVisible=false;
-
-function showDashboard(){
-$("login").classList.add("hidden");
-$("dashboard").classList.remove("hidden");
-$("usedKey").value=currentKey;
-}
-
-function showLogin(){
-$("dashboard").classList.add("hidden");
-$("login").classList.remove("hidden");
-$("keyInput").value="";
-currentKey="";
-keyVisible=false;
-$("usedKey").value="";
-$("usedKey").type="password";
-$("toggleKeyBtn").textContent="SHOW";
-setMsg($("loginMsg"),"");
-}
-
-if(sessionStorage.getItem("taha-alone-session")==="1"){
-currentKey=sessionStorage.getItem("taha-alone-key")||"";
-showDashboard();
-}
-
-$("loginForm").addEventListener("submit",e=>{
-e.preventDefault();
-const input=$("keyInput"),msg=$("loginMsg");
-const key=input.value.trim().toUpperCase();
-
-if(!key){
-setMsg(msg,"PLEASE ENTER YOUR KEY!");
-shake(input);
-return;
-}
-
-if(!ACCESS_KEYS.has(key)){
-setMsg(msg,"INVALID ACCESS KEY!");
-shake(input);
-return;
-}
-
-currentKey=key;
-setMsg(msg,"ACCESS GRANTED!",true);
-sessionStorage.setItem("taha-alone-session","1");
-sessionStorage.setItem("taha-alone-key",key);
-setTimeout(showDashboard,500);
-});
-
-$("pasteBtn").addEventListener("click",async()=>{
-try{
-const text=await navigator.clipboard.readText();
-if(!text){
-setMsg($("loginMsg"),"CLIPBOARD IS EMPTY!");
-return;
-}
-$("keyInput").value=text.trim().toUpperCase();
-setMsg($("loginMsg"),"KEY PASTED!",true);
-}catch(error){
-setMsg($("loginMsg"),"CLIPBOARD ACCESS DENIED!");
-}
-});
-
-$("toggleKeyBtn").addEventListener("click",()=>{
-keyVisible=!keyVisible;
-$("usedKey").type=keyVisible?"text":"password";
-$("toggleKeyBtn").textContent=keyVisible?"CLOSE":"SHOW";
-});
-
-function shake(el){
-el.classList.remove("shake");
-void el.offsetWidth;
-el.classList.add("shake");
-}
-
-$("logoutBtn").addEventListener("click",()=>{
-sessionStorage.removeItem("taha-alone-session");
-sessionStorage.removeItem("taha-alone-key");
-showLogin();
-});
-
+let currentKey="",keyVisible=false;
+function showDashboard(){$("login").classList.add("hidden");$("dashboard").classList.remove("hidden");$("usedKey").value=currentKey}
+function showLogin(){$("dashboard").classList.add("hidden");$("login").classList.remove("hidden");$("keyInput").value="";currentKey="";keyVisible=false;$("usedKey").value="";$("usedKey").type="password";$("toggleKeyBtn").textContent="SHOW";setMsg($("loginMsg"),"")}
+if(sessionStorage.getItem("taha-alone-session")==="1"){currentKey=sessionStorage.getItem("taha-alone-key")||"";showDashboard()}
+$("loginForm").addEventListener("submit",e=>{e.preventDefault();const input=$("keyInput"),msg=$("loginMsg"),key=input.value.trim().toUpperCase();if(!key){setMsg(msg,"PLEASE ENTER YOUR KEY!");shake(input);return}if(!ACCESS_KEYS.has(key)){setMsg(msg,"INVALID ACCESS KEY!");shake(input);return}currentKey=key;setMsg(msg,"ACCESS GRANTED!",true);sessionStorage.setItem("taha-alone-session","1");sessionStorage.setItem("taha-alone-key",key);setTimeout(showDashboard,500)});
+$("pasteBtn").addEventListener("click",async()=>{try{const text=await navigator.clipboard.readText();if(!text){setMsg($("loginMsg"),"CLIPBOARD IS EMPTY!");return}$("keyInput").value=text.trim().toUpperCase();setMsg($("loginMsg"),"KEY PASTED!",true)}catch(error){setMsg($("loginMsg"),"CLIPBOARD ACCESS DENIED!")}});
+$("toggleKeyBtn").addEventListener("click",()=>{keyVisible=!keyVisible;$("usedKey").type=keyVisible?"text":"password";$("toggleKeyBtn").textContent=keyVisible?"CLOSE":"SHOW"});
+function shake(el){el.classList.remove("shake");void el.offsetWidth;el.classList.add("shake")}
+$("logoutBtn").addEventListener("click",()=>{sessionStorage.removeItem("taha-alone-session");sessionStorage.removeItem("taha-alone-key");showLogin()});
 const selected=new Set();
-
-document.querySelectorAll(".feature").forEach(btn=>btn.addEventListener("click",()=>{
-const id=btn.dataset.id;
-selected.has(id)?selected.delete(id):selected.add(id);
-btn.setAttribute("aria-checked",selected.has(id));
-$("count").textContent=selected.size+"/3 SELECTED";
-setMsg($("featureMsg"),"");
-}));
-
-$("downloadXBtn").addEventListener("click",()=>{
-const msg=$("featureMsg");
-if(selected.size===0)return setMsg(msg,"PLEASE SELECT A FEATURE FIRST!");
-if(!selected.has("aimbot"))return setMsg(msg,"AIMBOT MUST BE SELECTED TO DOWNLOAD!");
-setMsg(msg,"");
-open(selected.size===1?AIMBOT_ONLY_URL:FULL_PACK_URL);
-});
-
-function goFeatures(){
-$("settingsView").classList.add("hidden");
-$("featuresView").classList.remove("hidden");
-$("navFeatures").classList.add("active");
-$("navSettings").classList.remove("active");
-requestAnimationFrame(()=>$("features").scrollIntoView({behavior:"smooth"}));
-}
-
-$("downloadFileBtn").addEventListener("click",goFeatures);
-$("navFeatures").addEventListener("click",goFeatures);
-
-$("navSettings").addEventListener("click",()=>{
-$("featuresView").classList.add("hidden");
-$("settingsView").classList.remove("hidden");
-$("navSettings").classList.add("active");
-$("navFeatures").classList.remove("active");
-window.scrollTo({top:0,behavior:"smooth"});
-});
-
-$("navTelegram").addEventListener("click",()=>open(TELEGRAM_URL));
-$("zarchiverBtn").addEventListener("click",()=>open(ZARCHIVER_URL));
+document.querySelectorAll(".feature").forEach(btn=>btn.addEventListener("click",()=>{const id=btn.dataset.id;selected.has(id)?selected.delete(id):selected.add(id);btn.setAttribute("aria-checked",selected.has(id));$("count").textContent=selected.size+"/3 SELECTED";setMsg($("featureMsg"),"")}));
+$("downloadXBtn").addEventListener("click",()=>{const msg=$("featureMsg");if(selected.size===0)return setMsg(msg,"PLEASE SELECT A FEATURE FIRST!");if(!selected.has("aimbot"))return setMsg(msg,"AIMBOT MUST BE SELECTED TO DOWNLOAD!");setMsg(msg,"");open(selected.size===1?AIMBOT_ONLY_URL:FULL_PACK_URL)});
+function goFeatures(){$("settingsView").classList.add("hidden");$("featuresView").classList.remove("hidden");$("navFeatures").classList.add("active");$("navSettings").classList.remove("active");requestAnimationFrame(()=>$("features").scrollIntoView({behavior:"smooth"}))}
+$("downloadFileBtn").addEventListener("click",goFeatures);$("navFeatures").addEventListener("click",goFeatures);
+$("navSettings").addEventListener("click",()=>{$("featuresView").classList.add("hidden");$("settingsView").classList.remove("hidden");$("navSettings").classList.add("active");$("navFeatures").classList.remove("active");window.scrollTo({top:0,behavior:"smooth"})});
+$("navTelegram").addEventListener("click",()=>open(TELEGRAM_URL));$("zarchiverBtn").addEventListener("click",()=>open(ZARCHIVER_URL));
 </script>
 </body>
 </html>
